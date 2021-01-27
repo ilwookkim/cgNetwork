@@ -27,6 +27,7 @@ TCGA_RNAseq_RSEM <- function(study_name="STAD"){
                                          geneInfo = geneInfo,
                                          method = "geneLength")
   rm(dataPrep, query)
+  return(countdata)
   # rename samples IDs of column to unifying samples IDs of subset
   # xx <- colnames(countdata)
   # xc <- gsub("-", ".", xx)
