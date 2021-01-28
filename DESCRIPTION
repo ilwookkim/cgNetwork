@@ -9,7 +9,7 @@ Authors@R:
 Description: Gene co-expression network analysis of TCGA data (RNAseq) package in the context of gene mutation and selected GO Term 
 License: `use_mit_license()`, `use_gpl3_license()` or friends to
     pick a license
-Depends: R (>= 4.0),TCGAbiolinks
+Depends: R (>= 3.6.3),TCGAbiolinks
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
