@@ -2,10 +2,7 @@ Package: DDNetwork
 Title: Dresden Gene co-expression network
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "Ilwook",
-           family = "Kim",
-           role = c("aut", "cre"),
-           email = "ilwook.kim.1982@gmail.com")
+    person("Ilwook", "Kim", role = c("aut", "cre"), email = "ilwook.kim.1982@gmail.com")
 Description: Gene co-expression network analysis of TCGA data (RNAseq) package in the context of gene mutation and selected GO Term 
 License: `use_mit_license()`, `use_gpl3_license()` or friends to
     pick a license
