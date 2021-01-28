@@ -9,22 +9,17 @@ Authors@R:
 Description: Gene co-expression network analysis of TCGA data (RNAseq) package in the context of gene mutation and selected GO Term 
 License: `use_mit_license()`, `use_gpl3_license()` or friends to
     pick a license
-Depends: R (>= 3.6.3)
+Depends: R (>= 4.0),TCGAbiolinks
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports: 
-  TCGAbiolinks (>= 2.12.6), 
-  data.table (>= 1.10.4.3),
-  fgsea (>= 1.10.0),
-  dplyr,
-  BiocParallel,
-  ggpubr,
-  downloader,
-  tidyverse,
-  parallel,
-  ggplot2,
-  ggforce,
-  ggrepel,
-  gplots,
+  TCGAbiolinks, 
+  downloader (>= 0.4), grDevices, biomaRt, dplyr, graphics,
+  tibble, GenomicRanges, XML (>= 3.98.0), data.table, jsonlite
+  (>= 1.0.0), plyr, knitr, methods, ggplot2, stringr (>= 1.0.0),
+  IRanges, rvest (>= 0.3.0), stats, utils, S4Vectors, R.utils,
+  SummarizedExperiment (>= 1.4.0), readr,
+  tools, tidyr, purrr, xml2, httr (>= 1.2.1),fgsea, BiocParallel,
+  ggpubr,downloader,tidyverse,parallel,ggforce,ggrepel,gplots
