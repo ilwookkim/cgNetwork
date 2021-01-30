@@ -1,5 +1,5 @@
-Package: DDNetwork
-Title: Dresden Gene co-expression network
+Package: TCGANetwork
+Title: TCGA Gene co-expression network
 Version: 0.0.0.9000
 Authors@R: 
     person("Ilwook", "Kim", role = c("aut", "cre"), email = "ilwook.kim.1982@gmail.com")
