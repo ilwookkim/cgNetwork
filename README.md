@@ -10,7 +10,33 @@ In order to figure out these network, we analyze cancer RNAseq data from TCGA da
   1. Seperate RNAseq data by mutation status of interesting gene.
   1. Check networks and neighbor genes under the mutation status
 
-## **Functions**
-  **1.TCGA_RNAseq_RSEM(TCGA_study_name)**
-    
-  **1.mutation_info(TCGA_study_name, gene, pipeline)**
+# Installation
+
+The **development** version can be installed from GitHub using:
+
+``` r
+devtools::install_github("ilwookkim/DDNetwork")
+```
+
+# Usage
+
+``` r
+library(DDNetwork)
+```
+
+TCGA RNAseq data download
+
+``` r
+TCGA_study_name = "STAD"
+TCGA_RNAseq_RSEM(TCGA_study_name)
+```
+
+Mutation information
+
+``` r
+TCGA_study_name = "STAD"
+gene = "TP53"
+pipeline = "muse"
+mutation_info(TCGA_study_name, gene, pipeline)
+```
+
