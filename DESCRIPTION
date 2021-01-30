@@ -13,10 +13,8 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports: 
   TCGAbiolinks, 
-  downloader (>= 0.4), grDevices, biomaRt, dplyr, graphics,
-  tibble, GenomicRanges, XML (>= 3.98.0), data.table, jsonlite
-  (>= 1.0.0), plyr, knitr, methods, ggplot2, stringr (>= 1.0.0),
-  IRanges, rvest (>= 0.3.0), stats, utils, S4Vectors, R.utils,
+  downloader (>= 0.4), dplyr, graphics,
+  tibble, data.table, plyr, knitr, methods, ggplot2, stringr (>= 1.0.0),
+  IRanges, rvest (>= 0.3.0), stats, R.utils,
   SummarizedExperiment (>= 1.4.0), readr,
-  tools, tidyr, purrr, xml2, httr (>= 1.2.1),fgsea, BiocParallel,
-  ggpubr,downloader,tidyverse,parallel,ggforce,ggrepel,gplots
+  tools, tidyr, xml2, tidyverse,gplots
