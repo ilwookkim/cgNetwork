@@ -1,4 +1,4 @@
-# **DDNetwork**
+# **TCGANetwork**
 TCGA gene co-expression network analysis
 
 **Abstract**
@@ -15,13 +15,13 @@ In order to figure out these network, we analyze cancer RNAseq data from TCGA da
 The **development** version can be installed from GitHub using:
 
 ``` r
-devtools::install_github("ilwookkim/DDNetwork")
+devtools::install_github("ilwookkim/TCGANetwork")
 ```
 
 # Usage
 
 ``` r
-library(DDNetwork)
+library(TCGANetwork)
 ```
 
 TCGA RNAseq data download
