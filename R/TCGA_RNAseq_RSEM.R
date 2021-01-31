@@ -20,7 +20,7 @@ TCGA_RNAseq_RSEM <- function(study_name="STAD"){
   # Transform the data to get raw count table (RSEM)
   dataPrep <- TCGAbiolinks::TCGAanalyze_Preprocessing(object = expdat)
   countdata <- TCGAbiolinks::TCGAanalyze_Normalization(tabDF = dataPrep,
-                                         geneInfo = TCGAbiolinks::geneInfogeneInfo,
+                                         geneInfo = TCGAbiolinks::geneInfo,
                                          method = "geneLength")
   samples <- colnames(countdata)
   samples <- sub("^(.{12}).*", "\\1", samples)
