@@ -15,7 +15,7 @@ RoxygenNote: 7.1.1
 biocViews: 
 Imports: 
   TCGAbiolinks, 
-  downloader (>= 0.4), dplyr, graphics, EDASeq,
+  downloader (>= 0.4), dplyr, graphics, EDASeq, igraph, RCy3, 
   tibble, data.table, plyr, knitr, methods, ggplot2, stringr (>= 1.0.0),
   IRanges, rvest (>= 0.3.0), stats, R.utils,
   SummarizedExperiment (>= 1.4.0), readr,
