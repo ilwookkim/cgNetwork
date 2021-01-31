@@ -9,13 +9,13 @@
 #' mut_info <- mutation_info("PAAD", "KRAS","muse")
 #' @export
 
-mutation_info <- function(study_name="STAD", gene="TP53", pipeline = "metect2"){
+mutation_info <- function(study_name="STAD", gene="TP53", pipeline = "mutect2"){
   maf <- TCGAbiolinks::GDCquery_Maf(study_name, pipelines = pipeline)
   sel_maf <- maf[which(maf$Hugo_Symbol == gene),]
   xx <- sel_maf$Tumor_Sample_Barcode
   #xc <- gsub("-", ".", xx)
-  xz <- sub("^(.{12}).*", "\\1", xx)
-  mut_samples <- unique(xz)
+  #xz <- sub("^(.{12}).*", "\\1", xx)
+  mut_samples <- unique(xx)
   subtype <- TCGAbiolinks::TCGAquery_subtype(tumor = study_name)
   mut_df <- data.frame(row.names = subtype$patient)
   mut_df$mut_status <- 0
