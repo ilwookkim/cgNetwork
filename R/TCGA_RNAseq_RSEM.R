@@ -22,7 +22,10 @@ TCGA_RNAseq_RSEM <- function(study_name="STAD"){
   countdata <- TCGAbiolinks::TCGAanalyze_Normalization(tabDF = dataPrep,
                                          geneInfo = TCGAbiolinks::geneInfogeneInfo,
                                          method = "geneLength")
-  rm(dataPrep, query)
+  samples <- colnames(countdata)
+  samples <- sub("^(.{12}).*", "\\1", samples)
+  colnames(countdata)<- samples
+  rm(dataPrep, query,samples)
   return(countdata)
 }
 
