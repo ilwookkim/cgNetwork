@@ -20,5 +20,8 @@ mutation_info <- function(study_name="STAD", gene="TP53", pipelines = "mutect2")
   mut_df$mut_status <- 0
   mut_df$mut_status[which(rownames(mut_df) %in% mut_samples)] <- 1
   names(mut_df) <- paste0(gene,"_mut_status")
+  samples <- rownames(mut_df)
+  samples <- gsub("-", ".", samples)
+  rownames(mut_df) <- samples
   return(mut_df)
 }
