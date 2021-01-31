@@ -2,14 +2,13 @@ Package: TCGANetwork
 Title: TCGA Gene co-expression network
 Version: 0.0.0.9000
 Authors@R: c(
-person("Ilwook", "Kim", role = c("aut", "cre"), email = "ilwook.kim.1982@gmail.com"),
-person("Nicolas", "Huber", role = c("aut", "cre"))
-)
+    person("Ilwook", "Kim", email="ilwook.kim.1982@gmail.com", role = c("aut","cre")),
+    person("Nicolas", "Huber", role = c("aut","cre")))
     
 Description: Gene co-expression network analysis of TCGA data (RNAseq) package in the context of gene mutation and selected GO Term 
 License: `use_mit_license()`, `use_gpl3_license()` or friends to
     pick a license
-Depends: R (>= 3.6.3),TCGAbiolinks
+Depends: R (>= 3.6.3)
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
