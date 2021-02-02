@@ -50,5 +50,10 @@ common_neighbor <- neighbor_finder(countdata, gene="CDKN1A", cor_method = "spear
 TCGA Network by mutation status of interesting gene
 
 ``` r
+TCGANetwork_list <- TCGANetwork(countdata, mut_df, common_neighbor, cor_method = "spearman", weight.cut.off=.5)
+```
 
+Interactive clustered network plots by mutation status using shiny and visNetwork
+``` r
+Netplot(TCGANetwork_list)
 ```

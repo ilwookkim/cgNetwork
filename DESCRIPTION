@@ -3,7 +3,8 @@ Title: TCGA Gene co-expression network
 Version: 0.0.0.9000
 Authors@R: c(
     person("Ilwook", "Kim", email="ilwook.kim.1982@gmail.com", role = c("aut","cre")),
-    person("Nicolas", "Huber", role = "aut"))
+    person("Nicolas", "Huber", role = "aut"),
+    person("‪Vasily", "Romanov" , role = "aut"))
 Description: Gene co-expression network analysis of TCGA data (RNAseq) package in the context of gene mutation and selected GO Term 
 License: `use_mit_license()`, `use_gpl3_license()` or friends to
     pick a license
@@ -14,7 +15,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 biocViews: 
 Imports: 
-  TCGAbiolinks, visNetwork, 
+  TCGAbiolinks, visNetwork, shiny,
   downloader (>= 0.4), dplyr, graphics, EDASeq, igraph, RCy3, 
   tibble, data.table, plyr, knitr, methods, ggplot2, stringr (>= 1.0.0),
   IRanges, rvest (>= 0.3.0), stats, R.utils,
