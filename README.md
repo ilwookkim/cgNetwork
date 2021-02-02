@@ -28,7 +28,7 @@ TCGA RNAseq data download
 
 ``` r
 TCGA_study_name = "STAD"
-TCGA_RNAseq_RSEM(TCGA_study_name)
+countdata <- TCGA_RNAseq_RSEM(TCGA_study_name)
 ```
 
 Mutation information
@@ -36,7 +36,19 @@ Mutation information
 ``` r
 TCGA_study_name = "STAD"
 gene = "TP53"
-pipeline = "muse"
-mutation_info(TCGA_study_name, gene, pipeline)
+pipeline = "mutect2"
+# There are four pipelines: muse, varscan2, somaticsniper, mutect2
+mut_df <- mutation_info(countdata,TCGA_study_name, gene, pipeline)
 ```
 
+Neighbor genes finder
+
+``` r
+common_neighbor <- neighbor_finder(countdata, gene="CDKN1A", cor_method = "spearman", cor.cut.off=.39, weight.cut.off=.2)
+```
+
+TCGA Network by mutation status of interesting gene
+
+``` r
+
+```
