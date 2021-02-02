@@ -9,23 +9,23 @@
 
 TCGA_RNAseq_RSEM <- function(study_name="STAD"){
   query <- TCGAbiolinks::GDCquery(project = paste0("TCGA-",study_name),
-                    data.category = "Gene expression",
-                    data.type = "Gene expression quantification",
-                    platform = "Illumina HiSeq",
-                    file.type  = "results",
-                    experimental.strategy = "RNA-Seq",
-                    legacy = TRUE)
+                                  data.category = "Gene expression",
+                                  data.type = "Gene expression quantification",
+                                  platform = "Illumina HiSeq",
+                                  file.type  = "results",
+                                  experimental.strategy = "RNA-Seq",
+                                  legacy = TRUE)
   TCGAbiolinks::GDCdownload(query, files.per.chunk = 10)
   expdat <- TCGAbiolinks::GDCprepare(query = query, save = FALSE)
   # Transform the data to get raw count table (RSEM)
   dataPrep <- TCGAbiolinks::TCGAanalyze_Preprocessing(object = expdat)
   countdata <- TCGAbiolinks::TCGAanalyze_Normalization(tabDF = dataPrep,
-                                         geneInfo = TCGAbiolinks::geneInfo,
-                                         method = "geneLength")
+                                                       geneInfo = TCGAbiolinks::geneInfo,
+                                                       method = "geneLength")
   samples <- colnames(countdata)
-  samples <- sub("^(.{12}).*", "\\1", samples)
+  samples <- sub("^(.{15}).*", "\\1", samples)
   colnames(countdata)<- samples
-  rm(dataPrep, query,samples)
+  rm(dataPrep, query)
   return(countdata)
 }
 
