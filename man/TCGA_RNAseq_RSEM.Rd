@@ -13,6 +13,6 @@ TCGA_RNAseq_RSEM(study_name = "STAD")
 This function allows the user to download TCGA RNAseq data.
 }
 \examples{
-countdata <- TCGA_RNAseq_RSEM(STAD)
-countdata <- TCGA_RNAseq_RSEM(PAAD)
+countdata <- TCGA_RNAseq_RSEM("STAD")
+countdata <- TCGA_RNAseq_RSEM("PAAD")
 }

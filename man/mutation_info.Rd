@@ -4,9 +4,16 @@
 \alias{mutation_info}
 \title{mutation_info Function}
 \usage{
-mutation_info(study_name = "STAD", gene = "TP53", pipeline = "metect2")
+mutation_info(
+  countdata,
+  study_name = "STAD",
+  gene = "TP53",
+  pipelines = "mutect2"
+)
 }
 \arguments{
+\item{countdata}{TCGA RNAseq countdata. i.g countdata <- TCGA_RNAseq_RSEM("STAD")}
+
 \item{study_name}{name of TCGA study. Defaults to "STAD" (Stomach adenocarcinoma). Find more TCGA Study Abbreviations: https://gdc.cancer.gov/resources-tcga-users/tcga-code-tables/tcga-study-abbreviations}
 
 \item{gene}{Hugo Symbol of gene Default to "TP53"}
@@ -17,6 +24,6 @@ mutation_info(study_name = "STAD", gene = "TP53", pipeline = "metect2")
 This function allows the user to download mutation infomation.
 }
 \examples{
-mut_info <- mutation_info("STAD", "TP53")
-mut_info <- mutation_info("PAAD", "KRAS")
+mut_info <- mutation_info(countdata, "STAD", "TP53", "mutect2")
+mut_info <- mutation_info(countdata, "PAAD", "KRAS","muse")
 }
