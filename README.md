@@ -67,3 +67,28 @@ TCGANetwork_list <- TCGANetwork(countdata, mut_df,
 Netplot(TCGANetwork_list, interest_gene = gene2, mut_gene = gene1)
 ```
 - ![ex_screenshot](./data/DiNetwork.png)
+
+**Network using Cytoscape**
+
+  1. Download and Install Cytoscape.
+    https://cytoscape.org/download.html
+  1. Open Cytoscape
+  1. Install plugin **Diffany**
+  1. Run below in R
+  ``` r
+  g1 <- TCGANetwork_list[[1]]
+  g2 <- TCGANetwork_list[[2]]
+  RCy3::createNetworkFromIgraph(g1,"network_wt")
+  RCy3::createNetworkFromIgraph(g2,"network_mut")
+  ```
+  1. Save network file as .cys.
+  1. Import network_wt.cys and network_mut.cys files
+  1. Apps/Diffany > Run Diffany project
+  1. Go to Diffany tab
+  1. Input networks window : include - check Two networks, Reference - check wt network
+  1. Options window : Comparison mode - here I used One to all, Cutoff - Here I used 0.5 Check Differntial networks and Consensus networks.
+  1. Press Start
+  1. export image
+
+- ![ex_screenshot](./data/cytoscape_Diffany.png)
+
