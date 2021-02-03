@@ -64,6 +64,6 @@ TCGANetwork_list <- TCGANetwork(countdata, mut_df,
 
 **Interactive clustered network plots by mutation status using shiny and visNetwork**
 ``` r
-Netplot(TCGANetwork_list, interest_gene = "gene2", mut_gene = "gene1")
+Netplot(TCGANetwork_list, interest_gene = gene2, mut_gene = gene1)
 ```
 - ![ex_screenshot](./data/DiNetwork.png)
