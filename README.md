@@ -46,13 +46,20 @@ mut_df <- mutation_info(countdata,TCGA_study_name, gene = gene1, pipeline = "mut
 **Neighbor genes finder**
 
 ``` r
-common_neighbor <- neighbor_finder(countdata, gene=gene2, cor_method = "spearman", cor.cut.off=.39, weight.cut.off=.2)
+common_neighbor <- neighbor_finder(countdata, 
+                                  gene=gene2, 
+                                  cor_method = "spearman", 
+                                  cor.cut.off=.39, 
+                                  weight.cut.off=.2)
 ```
 
 **TCGA Network by mutation status of interesting gene**
 
 ``` r
-TCGANetwork_list <- TCGANetwork(countdata, mut_df, common_neighbor, cor_method = "spearman", weight.cut.off=.5)
+TCGANetwork_list <- TCGANetwork(countdata, mut_df, 
+                                common_neighbor, 
+                                cor_method = "spearman", 
+                                weight.cut.off=.5)
 ```
 
 **Interactive clustered network plots by mutation status using shiny and visNetwork**
