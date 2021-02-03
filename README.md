@@ -91,6 +91,6 @@ Netplot(TCGANetwork_list, interest_gene = gene2, mut_gene = gene1)
   1. Press Start
   1. export image
 
-<img src="data/cytoscape_Diffany.png" height="600px"/>
+<img src="data/cytoscape_Diffany.png"/>
 
   Red: Up-regulate in Mut - Green: Down-regulate in Mut
