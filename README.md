@@ -23,29 +23,30 @@ devtools::install_github("ilwookkim/TCGANetwork")
 
 ``` r
 library(TCGANetwork)
+
+TCGA_study_name = "STAD"
+gene1 = "TP53"
+pipeline = "mutect2"
+gene2 = "CDKN1A"
 ```
 
 **TCGA RNAseq data download**
 
 ``` r
-TCGA_study_name = "STAD"
 countdata <- TCGA_RNAseq_RSEM(TCGA_study_name)
 ```
 
 **Mutation information**
 
 ``` r
-TCGA_study_name = "STAD"
-gene = "TP53"
-pipeline = "mutect2"
 # There are four pipelines: muse, varscan2, somaticsniper, mutect2
-mut_df <- mutation_info(countdata,TCGA_study_name, gene, pipeline)
+mut_df <- mutation_info(countdata,TCGA_study_name, gene = gene1, pipeline = "mutect2")
 ```
 
 **Neighbor genes finder**
 
 ``` r
-common_neighbor <- neighbor_finder(countdata, gene="CDKN1A", cor_method = "spearman", cor.cut.off=.39, weight.cut.off=.2)
+common_neighbor <- neighbor_finder(countdata, gene=gene2, cor_method = "spearman", cor.cut.off=.39, weight.cut.off=.2)
 ```
 
 **TCGA Network by mutation status of interesting gene**
@@ -56,5 +57,6 @@ TCGANetwork_list <- TCGANetwork(countdata, mut_df, common_neighbor, cor_method =
 
 **Interactive clustered network plots by mutation status using shiny and visNetwork**
 ``` r
-Netplot(TCGANetwork_list)
+Netplot(TCGANetwork_list, interest_gene = "gene2", mut_gene = "gene1")
 ```
+- ![ex_screenshot](./data/DiNetwork.png)
