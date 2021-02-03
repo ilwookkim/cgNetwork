@@ -67,7 +67,7 @@ TCGANetwork_list <- TCGANetwork(countdata, mut_df,
 Netplot(TCGANetwork_list, interest_gene = gene2, mut_gene = gene1)
 ```
 
-<img src="data/DiNetwork.png" height="600px"/>
+<img src="data/DiNetwork.png"/>
 
 **Network using Cytoscape**
 
