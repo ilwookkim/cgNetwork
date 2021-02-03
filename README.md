@@ -66,7 +66,8 @@ TCGANetwork_list <- TCGANetwork(countdata, mut_df,
 ``` r
 Netplot(TCGANetwork_list, interest_gene = gene2, mut_gene = gene1)
 ```
-- ![ex_screenshot](./data/DiNetwork.png)
+
+<img src="data/DiNetwork.png" height="600px"/>
 
 **Network using Cytoscape**
 
@@ -90,6 +91,6 @@ Netplot(TCGANetwork_list, interest_gene = gene2, mut_gene = gene1)
   1. Press Start
   1. export image
 
-<img src="data/cytoscape_Diffany.png" height="300px"/>
+<img src="data/cytoscape_Diffany.png" height="600px"/>
 
   Red: Up-regulate in Mut - Green: Down-regulate in Mut
