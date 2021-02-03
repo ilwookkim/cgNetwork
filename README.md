@@ -92,3 +92,4 @@ Netplot(TCGANetwork_list, interest_gene = gene2, mut_gene = gene1)
 
 - ![ex_screenshot](./data/cytoscape_Diffany.png)
 
+  Red: Up-regulate in Mut - Green: Down-regulate in Mut
