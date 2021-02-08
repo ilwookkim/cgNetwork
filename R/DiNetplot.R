@@ -5,10 +5,10 @@
 #' @param interest_gene The gene that used in neighbor_finder function.
 #' @param mut_gene The gene that used in mutation_info function.
 #' @examples
-#' DiNetplot(TCGANetwork_list,interest_gene = "CDKN1A", mut_gene = "TP53")
+#' DiNetplot(TCGANetwork_list)
 #' @export
 
-DiNetplot <- function(TCGANetwork_list, interest_gene = "gene2", mut_gene = "gene1"){
+DiNetplot <- function(TCGANetwork_list){
   ui <- shiny::fluidPage(
     shiny::fluidRow(
       column(6,
@@ -57,7 +57,7 @@ DiNetplot <- function(TCGANetwork_list, interest_gene = "gene2", mut_gene = "gen
 
     output$vis1 <- visNetwork::renderVisNetwork(
       {
-        visNetwork::visNetwork(nodes1, edges1, main = paste(interest_gene,"Network in wild type of",mut_gene), width = "100%") %>%
+        visNetwork::visNetwork(nodes1, edges1, main = paste("Network in wild type"), width = "100%") %>%
           visNetwork::visIgraphLayout() %>%
           visNetwork::visNodes(
             shape = "dot",
@@ -79,7 +79,7 @@ DiNetplot <- function(TCGANetwork_list, interest_gene = "gene2", mut_gene = "gen
       })
     output$vis2 <- visNetwork::renderVisNetwork(
       {
-        visNetwork::visNetwork(nodes2, edges2, main = paste(interest_gene,"Network in mutation of",mut_gene), width = "100%") %>%
+        visNetwork::visNetwork(nodes2, edges2, main = paste("Network in mutation"), width = "100%") %>%
           visNetwork::visIgraphLayout() %>%
           visNetwork::visNodes(
             shape = "dot",
