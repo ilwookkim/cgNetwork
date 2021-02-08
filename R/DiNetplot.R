@@ -11,9 +11,9 @@
 DiNetplot <- function(TCGANetwork_list){
   ui <- shiny::fluidPage(
     shiny::fluidRow(
-      column(6,
+      shiny::column(6,
              visNetwork::visNetworkOutput('vis1')),
-      column(6,
+      shiny::column(6,
              visNetwork::visNetworkOutput('vis2'))
     )
   )
