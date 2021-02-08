@@ -62,7 +62,7 @@ TCGANetwork_list <- TCGANetwork(countdata, mut_df,
                                 weight.cut.off=.5)
 ```
 
-**Interactive clustered network plots by mutation status using shiny and visNetwork**
+**Shiny Dashboard based interactive clustered network plots by mutation status**
 ``` r
 Netplot(TCGANetwork_list, interest_gene = gene2, mut_gene = gene1)
 ```
