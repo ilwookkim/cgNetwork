@@ -50,7 +50,7 @@ common_neighbor <- neighbor_finder(countdata,
                                   gene=gene2, 
                                   cor_method = "spearman", 
                                   cor.cut.off=.39, 
-                                  weight.cut.off=.2)
+                                  weight.cut.off=.5)
 ```
 
 **TCGA Network by mutation status of interesting gene**

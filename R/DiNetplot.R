@@ -12,9 +12,9 @@ DiNetplot <- function(TCGANetwork_list){
   ui <- shiny::fluidPage(
     shiny::fluidRow(
       shiny::column(6,
-             visNetwork::visNetworkOutput('vis1')),
+                    visNetwork::visNetworkOutput('vis1')),
       shiny::column(6,
-             visNetwork::visNetworkOutput('vis2'))
+                    visNetwork::visNetworkOutput('vis2'))
     )
   )
 
@@ -104,4 +104,4 @@ DiNetplot <- function(TCGANetwork_list){
   return(shiny::shinyApp(ui = ui, server = server))
 
 }
-
+DiNetplot(TCGANetwork_list)

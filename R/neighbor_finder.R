@@ -5,12 +5,12 @@
 #' @param gene Interesting gene to find network. Defaults to "CDKN1A".
 #' @param cor_method correlation coeffiecint method "spearman" or "pearson". Defaults to "spearman"
 #' @param cor.cut.off cut off value of correlation coeffiecint to build network. Defaults to .39
-#' @param weight.cut.off cut off value of network weight to reduce edges. Defaults to .2
+#' @param weight.cut.off cut off value of network weight to reduce edges. Defaults to .5
 #' @examples
-#' common_neighbor <- neighbor_finder(countdata, gene="CDKN1A", cor_method = "spearman", cor.cut.off=.39, weight.cut.off=.2)
+#' common_neighbor <- neighbor_finder(countdata, gene="CDKN1A", cor_method = "spearman", cor.cut.off=.39, weight.cut.off=.5)
 #' @export
 
-neighbor_finder <- function(countdata, gene="CDKN1A", cor_method = "spearman", cor.cut.off=.39, weight.cut.off=.2){
+neighbor_finder <- function(countdata, gene="CDKN1A", cor_method = "spearman", cor.cut.off=.39, weight.cut.off=.5){
   na_omit_df <- na.omit(countdata)
   rnaseq <- data.frame(t(na_omit_df))
   rnaseq <- rnaseq[, !sapply(rnaseq, function(x) { sd(x) == 0} )]
