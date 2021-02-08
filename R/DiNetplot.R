@@ -8,7 +8,7 @@
 #' DiNetplot(TCGANetwork_list,interest_gene = "CDKN1A", mut_gene = "TP53")
 #' @export
 
-DiNetplot <- function(TCGANetwork_list, interest_gene = "gene2", mut_gene = "gene1"){
+DiNetplot <- function(TCGANetwork_list, interest_gene = gene2, mut_gene = gene1){
   ui <- shiny::fluidPage(
     shiny::fluidRow(
       column(6,
@@ -104,3 +104,4 @@ DiNetplot <- function(TCGANetwork_list, interest_gene = "gene2", mut_gene = "gen
   return(shiny::shinyApp(ui = ui, server = server))
 
 }
+
