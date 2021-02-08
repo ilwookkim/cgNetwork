@@ -69,6 +69,9 @@ DiNetplot(TCGANetwork_list)
 
 <img src="data/DiNetwork.png"/>
 
+Example shiny server: https://ilwookkim.shinyapps.io/dinetplot/
+
+
 **Network data export and differential network visualization using Cytoscape**
 
   1. Download and Install Cytoscape.
