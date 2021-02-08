@@ -69,7 +69,7 @@ Netplot(TCGANetwork_list, interest_gene = gene2, mut_gene = gene1)
 
 <img src="data/DiNetwork.png"/>
 
-**Network using Cytoscape**
+**Network data export and differential network visualization using Cytoscape**
 
   1. Download and Install Cytoscape.
     https://cytoscape.org/download.html
