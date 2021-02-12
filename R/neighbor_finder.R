@@ -13,12 +13,15 @@
 neighbor_finder <- function(countdata, gene="CDKN1A", cor_method = "spearman", cor.cut.off=.39, weight.cut.off=.5){
   na_omit_df <- na.omit(countdata)
   rnaseq <- data.frame(t(na_omit_df))
+  rm(na_omit_df)
   rnaseq <- rnaseq[, !sapply(rnaseq, function(x) { sd(x) == 0} )]
-  cor_df <- cor(rnaseq, method = cor_method)
-  rm(na_omit_df, rnaseq)
-  cor_df[cor_df == 1] <- 0
-  cor_df[cor_df < cor.cut.off] <- 0
-  net <- igraph::graph_from_adjacency_matrix(cor_df, mode='undirected', weighted = T, diag=F)
+  cor_df2 <- bigmemory::as.big.matrix(cor(rnaseq, method = cor_method))
+  rm(rnaseq)
+  cor_df2[which(cor_df2[,] == 1)] <- 0
+  cor_df2[which(cor_df2[,] < cor.cut.off)] <- 0
+  print("building network")
+  net <- igraph::graph_from_adjacency_matrix(cor_df2[,], mode='undirected', weighted = T, diag=F)
+  rm(cor_df2)
   net <- igraph::simplify(net, remove.multiple = T, remove.loops = T)
   net.sp <- igraph::delete_edges(net, igraph::E(net)[weight<weight.cut.off])
   neigh.nodes <- igraph::neighbors(net.sp, igraph::V(net.sp)[gene])
