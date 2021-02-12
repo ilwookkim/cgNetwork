@@ -47,7 +47,21 @@ mut_df <- mutation_info(countdata,TCGA_study_name, gene = gene1, pipeline = "mut
 **Neighbor genes finder**
 
 ``` r
-common_neighbor <- neighbor_finder(countdata, 
+# Correlation coefficient matrix for all genes is huge (20k x 20k). Therefore here we use bigmatrix from bigmemory package.
+
+library(bigmemory)
+
+# remove NA and Standard deviation is zero across the samples.
+
+countdata <- na.omit(countdata)
+countdata_t <- data.frame(t(countdata))
+rm(countdata)
+countdata_t <- countdata_t[, !sapply(countdata_t, function(x) { sd(x) == 0} )]
+
+big_cor_matrix <- as.big.matrix(cor(rnaseq, method = cor_method))
+rm(rnaseq)
+
+common_neighbor <- neighbor_finder(big_cor_matrix, 
                                   gene=gene2, 
                                   cor_method = "spearman", 
                                   cor.cut.off=.39, 
