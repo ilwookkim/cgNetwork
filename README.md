@@ -64,6 +64,7 @@ TCGANetwork_list <- TCGANetwork(countdata, mut_df,
 
 **Shiny Dashboard based interactive clustered network plots by mutation status**
 ``` r
+# require(dplyr)
 DiNetplot(TCGANetwork_list)
 ```
 
