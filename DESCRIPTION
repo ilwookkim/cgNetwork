@@ -1,7 +1,7 @@
 Package: TCGANetwork
 Title: TCGA Gene co-expression network
 Version: 0.0.0.9000
-Authors@R: c(
+Authors: c(
     person("Ilwook", "Kim", email="ilwook.kim.1982@gmail.com", role = c("aut","cre")),
     person("Nicolas", "Huber", role = "aut"),
     person("‪Vasily", "Romanov" , role = "aut"))
