@@ -55,7 +55,6 @@ library(bigmemory)
 
 countdata <- na.omit(countdata)
 countdata_t <- data.frame(t(countdata))
-rm(countdata)
 countdata_t <- countdata_t[, !sapply(countdata_t, function(x) { sd(x) == 0} )]
 
 big_cor_matrix <- as.big.matrix(cor(countdata_t, method = "spearman"))
