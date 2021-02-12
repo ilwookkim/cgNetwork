@@ -58,12 +58,11 @@ countdata_t <- data.frame(t(countdata))
 rm(countdata)
 countdata_t <- countdata_t[, !sapply(countdata_t, function(x) { sd(x) == 0} )]
 
-big_cor_matrix <- as.big.matrix(cor(countdata_t, method = cor_method))
+big_cor_matrix <- as.big.matrix(cor(countdata_t, method = "spearman"))
 rm(countdata_t)
 
 common_neighbor <- neighbor_finder(big_cor_matrix, 
                                   gene=gene2, 
-                                  cor_method = "spearman", 
                                   cor.cut.off=.39, 
                                   weight.cut.off=.5)
 ```
