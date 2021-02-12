@@ -31,7 +31,8 @@ gene2 = "CDKN1A"
 ```
 
 **TCGA RNAseq data download**
-
+  1. Approximately 1 GB of data will be downloaded.
+  
 ``` r
 countdata <- TCGA_RNAseq_RSEM(TCGA_study_name)
 ```
