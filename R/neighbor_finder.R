@@ -19,7 +19,6 @@ neighbor_finder <- function(countdata, gene="CDKN1A", cor_method = "spearman", c
   rm(rnaseq)
   cor_df2[which(cor_df2[,] == 1)] <- 0
   cor_df2[which(cor_df2[,] < cor.cut.off)] <- 0
-  print("building network")
   net <- igraph::graph_from_adjacency_matrix(cor_df2[,], mode='undirected', weighted = T, diag=F)
   rm(cor_df2)
   net <- igraph::simplify(net, remove.multiple = T, remove.loops = T)
