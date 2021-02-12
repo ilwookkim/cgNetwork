@@ -9,6 +9,7 @@
 #' @export
 
 DiNetplot <- function(TCGANetwork_list){
+ require(dplyr)
   ui <- shiny::fluidPage(
     shiny::fluidRow(
       shiny::column(6,
