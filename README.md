@@ -18,6 +18,7 @@ The **development** version can be installed from GitHub using:
 ``` r
 devtools::install_github("ilwookkim/TCGANetwork")
 ```
+Recommend memory >= 16G
 
 ### Usage
 
@@ -35,6 +36,16 @@ gene2 = "CDKN1A"
   
 ``` r
 countdata <- TCGA_RNAseq_RSEM(TCGA_study_name)
+
+
+# Here we used subset (Transcriptional Regulation by TP53) of countdata for the tutorial. 
+
+library(fgsea)
+gmt.file <- url("https://raw.githubusercontent.com/ilwookkim/TCGANetwork/main/data/ReactomePathways.gmt", method="libcurl")
+pathways <- gmtPathways(gmt.file)
+TP53_pathway <- pathways[["Transcriptional Regulation by TP53"]]
+
+countdata <- countdata[rownames(countdata) %in% TP53_pathway,]
 ```
 
 **Mutation information**
@@ -47,7 +58,7 @@ mut_df <- mutation_info(countdata,TCGA_study_name, gene = gene1, pipeline = "mut
 **Neighbor genes finder**
 
 ``` r
-# Correlation coefficient matrix for all genes is huge (20k x 20k). Therefore here we use bigmatrix from bigmemory package.
+# Correlation coefficient matrix will be huge, if we used all genes (20k x 20k). Therefore here we use bigmatrix from bigmemory package.
 
 library(bigmemory)
 
@@ -58,12 +69,11 @@ countdata_t <- data.frame(t(countdata))
 countdata_t <- countdata_t[, !sapply(countdata_t, function(x) { sd(x) == 0} )]
 
 big_cor_matrix <- as.big.matrix(cor(countdata_t, method = "spearman"))
-rm(countdata_t)
 
 common_neighbor <- neighbor_finder(big_cor_matrix, 
                                   gene=gene2, 
                                   cor.cut.off=.39, 
-                                  weight.cut.off=.5)
+                                  weight.cut.off=.4)
 ```
 
 **TCGA Network by mutation status of interesting gene**
@@ -72,7 +82,7 @@ common_neighbor <- neighbor_finder(big_cor_matrix,
 TCGANetwork_list <- TCGANetwork(countdata, mut_df, 
                                 common_neighbor, 
                                 cor_method = "spearman", 
-                                weight.cut.off=.5)
+                                weight.cut.off=.4)
 ```
 
 **Shiny Dashboard based interactive clustered network plots by mutation status**
