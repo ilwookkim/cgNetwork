@@ -1,7 +1,8 @@
 #' neighbor_finder
 #'
 #' Imports:
-#' igraph
+#' igraph,
+#' bigmemory
 #'
 #' This function allows the user to find neighbor genes network of interested gene.
 #' @param big_cor_matrix bigmatrix (bigmemory package) of Spearman's correlation coefficient from TCGA RNAseq countdata
@@ -13,7 +14,11 @@
 #' common_neighbor <- neighbor_finder(big_cor_matrix, gene="CDKN1A", cor_method = "spearman", cor.cut.off=.39, weight.cut.off=.5)
 #' @export
 
-neighbor_finder <- function(big_cor_matrix, gene, cor.cut.off=.39, weight.cut.off=.5){
+neighbor_finder <- function(countdata, gene, cor.cut.off=.39, weight.cut.off=.5){
+  countdata_t <- data.frame(t(countdata))
+  countdata_t <- countdata_t[, !sapply(countdata_t, function(x) { sd(x) == 0} )]
+  big_cor_matrix <- bigmemory::as.big.matrix(cor(countdata_t, method = "spearman"))
+  
   #check if the gene is at all present. Otherwise there would be a calculation first (which might take long) and then the error.
   if(!any(rownames(a1) %in% gene)) stop("Your gene of interest is not in the matrix.")
   
