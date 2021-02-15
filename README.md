@@ -1,12 +1,12 @@
-# **TCGANetwork**
-TCGA gene co-expression network analysis by mutation status
+# **cgNetwork**
+Gene co-expression network analysis by mutation status
 
 ## **Abstract**
 There are number of gene networks that regulates by mutation by transcription target genes in various cancer. This package aims to analyze these networks under the certain mutation status.
 
 ## **Approach**
-In order to figure out these network, we analyze cancer RNAseq data from TCGA database. 
-  1. Retrive RNAseq data from TCGA database.
+In order to figure out these network, we analyze cancer RNAseq data from various database. 
+  1. Retrive RNAseq data from various database.
   1. RNAseq by **mutation_gene** mutation.
   1. Build network around **gene_of_interest**
   1. Comparison Network of **gene_of_interest** by mutation of **mutation_gene** 
@@ -16,14 +16,13 @@ In order to figure out these network, we analyze cancer RNAseq data from TCGA da
 The **development** version can be installed from GitHub using:
 
 ``` r
-devtools::install_github("ilwookkim/TCGANetwork")
+devtools::install_github("ilwookkim/cgNetwork")
 ```
-Recommend memory >= 16G
 
 ### Usage
 
 ``` r
-library(TCGANetwork)
+library(cgNetwork)
 
 gene_of_interest = "CDKN1A"
 mutation_gene = "TP53"
@@ -35,7 +34,7 @@ For the tutorial we only use a subset of genes (Transcriptional Regulation by TP
 We also obtain the mutation information (there are four pipelines: muse, varscan2, somaticsniper, mutect2).
 ``` r 
 library(fgsea)
-gmt.file <- url("https://raw.githubusercontent.com/ilwookkim/TCGANetwork/main/data/ReactomePathways.gmt", method="libcurl")
+gmt.file <- url("https://raw.githubusercontent.com/ilwookkim/cgNetwork/main/data/ReactomePathways.gmt", method="libcurl")
 TP53_pathway <- gmtPathways(gmt.file)[["Transcriptional Regulation by TP53"]]
 ```
 Option 1: Using TCGABiolinks (Approximately 1 GB of data will be downloaded)
@@ -71,8 +70,8 @@ common_neighbor <- neighbor_finder(countdata, gene=gene_of_interest)
 
 Calculate networks (one for each mutation status) around the gene of interest. Interactive networks are vizualized via shiny.
 ``` r
-TCGANetwork_list <- TCGANetwork(countdata, mut_df, common_neighbor)
-DiNetplot(TCGANetwork_list)
+cgNetwork_list <- cgNetwork(countdata, mut_df, common_neighbor)
+DiNetplot(cgNetwork_list)
 ```
 
 <img src="data/DiNetwork.png"/>
@@ -88,8 +87,8 @@ Example shiny server: https://ilwookkim.shinyapps.io/dinetplot/
   1. Install plugin **Diffany**
   1. Run below in R
   ``` r
-  g1 <- TCGANetwork_list[[1]]
-  g2 <- TCGANetwork_list[[2]]
+  g1 <- cgNetwork_list[[1]]
+  g2 <- cgNetwork_list[[2]]
   RCy3::createNetworkFromIgraph(g1,"network_wt")
   RCy3::createNetworkFromIgraph(g2,"network_mut")
   ```
