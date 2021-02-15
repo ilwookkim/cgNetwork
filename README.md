@@ -65,15 +65,7 @@ library(bigmemory)
 # remove NA and Standard deviation is zero across the samples.
 
 countdata <- na.omit(countdata)
-countdata_t <- data.frame(t(countdata))
-countdata_t <- countdata_t[, !sapply(countdata_t, function(x) { sd(x) == 0} )]
-
-big_cor_matrix <- as.big.matrix(cor(countdata_t, method = "spearman"))
-
-common_neighbor <- neighbor_finder(big_cor_matrix, 
-                                  gene=gene2, 
-                                  cor.cut.off=.39, 
-                                  weight.cut.off=.4)
+common_neighbor <- neighbor_finder(countdata, gene=gene2)
 ```
 
 **TCGA Network by mutation status of interesting gene**
