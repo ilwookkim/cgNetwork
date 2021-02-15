@@ -7,9 +7,9 @@ There are number of gene networks that regulates by mutation by transcription ta
 ## **Approach**
 In order to figure out these network, we analyze cancer RNAseq data from TCGA database. 
   1. Retrive RNAseq data from TCGA database.
-  1. RNAseq by **gene1** mutation.
-  1. Build network of **gene2**
-  1. Comparison Network of **gene2** by mutation of **gene1** 
+  1. RNAseq by **mutation_gene** mutation.
+  1. Build network around **gene_of_interest**
+  1. Comparison Network of **gene_of_interest** by mutation of **mutation_gene** 
 
 ### Installation
 
@@ -26,60 +26,40 @@ Recommend memory >= 16G
 library(TCGANetwork)
 
 TCGA_study_name = "STAD"
-gene1 = "TP53"
-pipeline = "mutect2"
-gene2 = "CDKN1A"
+gene_of_interest = "CDKN1A"
+mutation_gene = "TP53"
 ```
 
 **TCGA RNAseq data download**
   - Approximately 1 GB of data will be downloaded.
-  
-``` r
-countdata <- TCGA_RNAseq_RSEM(TCGA_study_name)
-
-
-# Here we used subset (Transcriptional Regulation by TP53) of countdata for the tutorial. 
-
+ 
+For the tutorial we only use a subset of genes (Transcriptional Regulation by TP53).
+We also obtain the mutation information (there are four pipelines: muse, varscan2, somaticsniper, mutect2).
+``` r 
 library(fgsea)
 gmt.file <- url("https://raw.githubusercontent.com/ilwookkim/TCGANetwork/main/data/ReactomePathways.gmt", method="libcurl")
-pathways <- gmtPathways(gmt.file)
-TP53_pathway <- pathways[["Transcriptional Regulation by TP53"]]
+TP53_pathway <- gmtPathways(gmt.file)[["Transcriptional Regulation by TP53"]]
 
+countdata <- TCGA_RNAseq_RSEM(TCGA_study_name)
 countdata <- countdata[rownames(countdata) %in% TP53_pathway,]
-```
-
-**Mutation information**
-
-``` r
-# There are four pipelines: muse, varscan2, somaticsniper, mutect2
-mut_df <- mutation_info(countdata,TCGA_study_name, gene = gene1, pipeline = "mutect2")
+mut_df <- mutation_info(countdata,TCGA_study_name, gene = mutation_gene, pipeline = "mutect2")
 ```
 
 **Neighbor genes finder**
 
 ``` r
-# Correlation coefficient matrix will be huge, if we used all genes (20k x 20k). Therefore here we use bigmatrix from bigmemory package.
-
-library(bigmemory)
-
-# remove NA and Standard deviation is zero across the samples.
-
 countdata <- na.omit(countdata)
-common_neighbor <- neighbor_finder(countdata, gene=gene2)
+common_neighbor <- neighbor_finder(countdata, gene=gene_of_interest)
 ```
 
 **TCGA Network by mutation status of interesting gene**
 
 ``` r
-TCGANetwork_list <- TCGANetwork(countdata, mut_df, 
-                                common_neighbor, 
-                                cor_method = "spearman", 
-                                weight.cut.off=.4)
+TCGANetwork_list <- TCGANetwork(countdata, mut_df, common_neighbor)
 ```
 
 **Shiny Dashboard based interactive clustered network plots by mutation status**
 ``` r
-# require(dplyr)
 DiNetplot(TCGANetwork_list)
 ```
 
