@@ -29,7 +29,8 @@ gene_of_interest = "CDKN1A"
 mutation_gene = "TP53"
 ```
 
-**TCGA RNAseq data download**
+**Download Data**
+
 For the tutorial we only use a subset of genes (Transcriptional Regulation by TP53).
 We also obtain the mutation information (there are four pipelines: muse, varscan2, somaticsniper, mutect2).
 ``` r 
@@ -46,10 +47,10 @@ mut_df <- mutation_info(countdata, studyID, gene = mutation_gene, pipeline = "mu
 ```
 Option 2: Using cgdsr (allows for different data and is much faster)
 ```r
-cgds <- cgBase()
+cgds <- cgBase() #lists the available studies
 studyID <- "laml_tcga"
 
-cgStudy(cgds, mystudy)
+cgStudy(cgds, studyID) #lists the available profiles and caselists
 profile_name <- "mRNA expression (RNA Seq V2 RSEM)"
 
 countdata <- cgData(cgds, studyID, profile_name, genes=TP53_pathway)
@@ -67,6 +68,7 @@ common_neighbor <- neighbor_finder(countdata, gene=gene_of_interest)
 ```
 
 **Creating the Network**
+
 Calculate networks (one for each mutation status) around the gene of interest. Interactive networks are vizualized via shiny.
 ``` r
 TCGANetwork_list <- TCGANetwork(countdata, mut_df, common_neighbor)
