@@ -11,7 +11,7 @@
 
 neighbor_finder <- function(big_cor_matrix, gene="CDKN1A", cor.cut.off=.39, weight.cut.off=.5){
   big_cor_matrix[which(big_cor_matrix[,] == 1)] <- 0
-  big_cor_matrix[which(big_cor_matrix[,] < cor.cut.off)] <- 0
+  big_cor_matrix[which(abs(big_cor_matrix[,]) < cor.cut.off)] <- 0
   net <- igraph::graph_from_adjacency_matrix(big_cor_matrix[,], mode='undirected', weighted = T, diag=F)
   net <- igraph::simplify(net, remove.multiple = T, remove.loops = T)
   net.sp <- igraph::delete_edges(net, igraph::E(net)[weight<weight.cut.off])
