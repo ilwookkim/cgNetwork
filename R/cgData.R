@@ -9,6 +9,7 @@
 #' @param profile_name string, profile name (not ID) to be used (obtained from the printout of the cgStudy() function)
 #' @param caselist_name string, caselist name (not ID) to be used (obtained from the printout of the cgStudy() function)
 #' @param genes string vector with genes of interest. Symbols, EntrezIds and EnsemblIds work. If nothing (NA) is provided, all genes in the GO database will be used. This will take some time, so if you only need a specific set of genes, specify it here.
+#' @param dropNApatients boolean, should patients with only NA values be dropped? For mutation data, turn this to FALSE, otherwise non-mutated patients will drop out.
 #' @return data.frame, each row is a patient, each column is a gene
 #' @examples
 #' cgds <- cgBbase()
@@ -16,7 +17,7 @@
 #' cgStudy(cgds, mystudy)
 #' myData <- cgData(cgds, mystudy, profile_name="mRNA expression (RNA Seq RPKM)", genes=c("FLT3","TP53"))
 #' @export
-cgData <- function(cgds, cancer_study_id, profile_name, caselist_name="All samples", genes=NA){
+cgData <- function(cgds, cancer_study_id, profile_name, caselist_name="All samples", genes=NA, dropNApatients=T){
   #if no genes are specified, get all genes from GO
   if(is.na(genes)[1]) genes <- as.vector(unique(unlist(as.list(org.Hs.eg.db::org.Hs.egGO2EG))))
   nmath <- floor(length(genes)/400)
@@ -39,6 +40,6 @@ cgData <- function(cgds, cancer_study_id, profile_name, caselist_name="All sampl
   data1[,1:ncol(data1)] <- apply(data1, 2, function(x) ifelse(x %in% "NaN",NA,x)) #change NaNs to NAs
   #==output==#
   data1 <- as.data.frame(data1)
-  data1 <- data1[apply(data1,1,function(x) !all(is.na(x))),,drop=FALSE]
+  if(dropNApatients) data1 <- data1[apply(data1,1,function(x) !all(is.na(x))),,drop=FALSE]
   as.data.frame(t(data1))
 }
