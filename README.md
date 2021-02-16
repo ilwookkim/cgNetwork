@@ -79,7 +79,7 @@ cgNetwork_list <- cgNetwork(countdata, mut_df, common_neighbor)
 DiNetplot(cgNetwork_list)
 ```
 
-<img src="data/DiNetwork.png"/>
+<img src="data/DiNetwork_example.png"/>
 
 Example shiny server: https://ilwookkim.shinyapps.io/dinetplot/
 
@@ -106,6 +106,6 @@ Example shiny server: https://ilwookkim.shinyapps.io/dinetplot/
   1. Press Start
   1. export image
 
-<img src="data/cytoscape_Diffany.png"/>
+<img src="data/cytoscape_Diffany_example.png"/>
 
   Red: Up-regulate in Mut - Green: Down-regulate in Mut
