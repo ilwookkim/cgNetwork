@@ -28,17 +28,17 @@ gene_of_interest = "CDKN1A"
 mutation_gene = "TP53"
 ```
 
-**Download Data**
+**Acquire Data**
 
 For the tutorial we only use a subset of genes (Transcriptional Regulation by TP53).
-We also obtain the mutation information (there are four pipelines: muse, varscan2, somaticsniper, mutect2).
 ``` r 
 library(fgsea)
 gmt.file <- url("https://raw.githubusercontent.com/ilwookkim/cgNetwork/main/data/ReactomePathways.gmt", method="libcurl")
 TP53_pathway <- gmtPathways(gmt.file)[["Transcriptional Regulation by TP53"]]
 ```
 
-Option 1: Using cgdsr (allows for different data and is much faster)
+Option 1: Using the [cgdsr package](https://cran.r-project.org/web/packages/cgdsr/index.html)
+We need to create a cgds object, which also gives us the IDs of available projects. We choose "laml_tcga". Then we acquire information about this project via the cgInfo function, listing the available data types. We choose "mRNA expression (RNA Seq V2 RSEM)". Finally we get the data via the cgData function. We also get mutation data via the cgMutation function.
 ```r
 cgds <- cgBase() #lists the available studies
 studyID <- "laml_tcga"
@@ -47,12 +47,11 @@ cgInfo(cgds, studyID) #lists the available profiles and caselists
 profile_name <- "mRNA expression (RNA Seq V2 RSEM)"
 
 countdata <- cgData(cgds, studyID, profile_name, genes=TP53_pathway)
-countdata <- countdata[apply(countdata,1,function(x) !all(is.na(x))),]
 mut_df <- cgMutation(cgds, studyID, genes="TP53")
-mut_df <- subset(mut_df, rownames(mut_df) %in% colnames(countdata))
 ```
 
-Option 2: Using TCGABiolinks (Approximately 1 GB of data will be downloaded)
+Option 2: Using the [TCGABiolinks package](https://bioconductor.org/packages/release/bioc/html/TCGAbiolinks.html) (Approximately 1 GB of data will be downloaded)
+We obtain the RNA-Seq data via the TCGA_RNAseq_RSEM function and mutation information via mutation_info function (there are four pipelines: muse, varscan2, somaticsniper, mutect2).
 ```r
 studyID = "LAML"
 countdata <- TCGA_RNAseq_RSEM(studyID)
@@ -63,10 +62,8 @@ mut_df <- mutation_info(countdata, studyID, gene = mutation_gene, pipeline = "mu
 **Neighbor genes finder**
 
 ``` r
-common_neighbor <- neighbor_finder(countdata, 
-                                   gene=gene_of_interest,
-                                   cor.cut.off=.39, 
-                                   weight.cut.off=.5)                            
+common_neighbor <- neighbor_finder(countdata, gene=gene_of_interest,
+                                   cor.cut.off=.39, weight.cut.off=.5)                            
 ```
 
 **Creating the Network**
