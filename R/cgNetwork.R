@@ -1,6 +1,9 @@
 #' cgNetwork
 #'
-#' This function allows the user to find neighbor genes network of mutation status of interested gene.
+#' Imports:
+#' igraph
+#'
+#' Find gene networks around gene of interest, one for WT and one for mutated.
 #' It returns two igraph lists.
 #' @param countdata RNAseq countdata.
 #' @param mut_df Mutation status.
@@ -12,6 +15,9 @@
 #' @export
 
 cgNetwork <- function(countdata, mut_df, common_neighbor, cor_method = "spearman", weight.cut.off=.5){
+  # make sure that the mut_df only has genes that occur in the countdata
+  mut_df <- subset(mut_df, rownames(mut_df) %in% colnames(countdata))
+  
   wt <- rownames(mut_df)[which(mut_df[,1]==0)]
   mut <- rownames(mut_df)[which(mut_df[,1]==1)]
 
