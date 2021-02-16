@@ -18,11 +18,13 @@
 neighbor_finder <- function(countdata, gene=gene_of_interest, cor.cut.off=.39, weight.cut.off=.5, t=TRUE){
   if(!t){
     countdata_t <- data.frame(countdata)
+    countdata_t <- countdata_t[!sapply(countdata_t, function(x) { sd(x) == 0} ),]
   } else {
     countdata <- data.frame(na.omit(countdata))
     countdata_t <- data.frame(t(countdata))
+    countdata_t <- countdata_t[, !sapply(countdata_t, function(x) { sd(x) == 0} )]
   }
-  countdata_t <- countdata_t[, !sapply(countdata_t, function(x) { sd(x) == 0} )]
+
   big_cor_matrix <- bigmemory::as.big.matrix(cor(countdata_t, method = "spearman"))
 
   #check if the gene is at all present. Otherwise there would be a calculation first (which might take long) and then the error.
