@@ -37,14 +37,8 @@ library(fgsea)
 gmt.file <- url("https://raw.githubusercontent.com/ilwookkim/cgNetwork/main/data/ReactomePathways.gmt", method="libcurl")
 TP53_pathway <- gmtPathways(gmt.file)[["Transcriptional Regulation by TP53"]]
 ```
-Option 1: Using TCGABiolinks (Approximately 1 GB of data will be downloaded)
-```r
-studyID = "STAD"
-countdata <- TCGA_RNAseq_RSEM(studyID)
-countdata <- countdata[rownames(countdata) %in% TP53_pathway,]
-mut_df <- mutation_info(countdata, studyID, gene = mutation_gene, pipeline = "mutect2")
-```
-Option 2: Using cgdsr (allows for different data and is much faster)
+
+Option 1: Using cgdsr (allows for different data and is much faster)
 ```r
 cgds <- cgBase() #lists the available studies
 studyID <- "laml_tcga"
@@ -53,17 +47,28 @@ cgStudy(cgds, studyID) #lists the available profiles and caselists
 profile_name <- "mRNA expression (RNA Seq V2 RSEM)"
 
 countdata <- cgData(cgds, studyID, profile_name, genes=TP53_pathway)
-countdata <- mydata[apply(countdata,1,function(x) !all(is.na(x))),]
-countdata <- na.omit(t(countdata))
+countdata <- countdata[apply(countdata,1,function(x) !all(is.na(x))),]
+countdata <- data.frame(na.omit(t(countdata)))
 mut_df <- cgMutation(cgds, studyID, genes="TP53")
 mut_df <- subset(mut_df, rownames(mut_df) %in% colnames(countdata))
+```
+
+Option 2: Using TCGABiolinks (Approximately 1 GB of data will be downloaded)
+```r
+studyID = "LAML"
+countdata <- TCGA_RNAseq_RSEM(studyID)
+countdata <- countdata[rownames(countdata) %in% TP53_pathway,]
+mut_df <- mutation_info(countdata, studyID, gene = mutation_gene, pipeline = "mutect2")
 ```
 
 **Neighbor genes finder**
 
 ``` r
-countdata <- na.omit(countdata)
-common_neighbor <- neighbor_finder(countdata, gene=gene_of_interest)
+common_neighbor <- neighbor_finder(countdata, 
+                                   gene=gene_of_interest,
+                                   cor.cut.off=.39, 
+                                   weight.cut.off=.5, 
+                                   t=TRUE)
 ```
 
 **Creating the Network**
