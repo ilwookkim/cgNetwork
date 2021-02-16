@@ -26,15 +26,15 @@ cgNetwork <- function(countdata, mut_df, common_neighbor, cor_method = "spearman
   rnaseq <- data.frame(t(na_omit_df))
 
   network <- list(
-    wtNetwork  = .subNetwork(rnaseq=rnaseq, mut_status=wt,  cor_method=cor_method, weight.cut.off=weight.cut.off),
-    mutNetwork = .subNetwork(rnaseq=rnaseq, mut_status=mut, cor_method=cor_method, weight.cut.off=weight.cut.off)
+    wtNetwork  = .subNetwork(rnaseq=rnaseq, mut_status=wt,  common_neighbor=common_neighbor, cor_method=cor_method, weight.cut.off=weight.cut.off),
+    mutNetwork = .subNetwork(rnaseq=rnaseq, mut_status=mut, common_neighbor=common_neighbor, cor_method=cor_method, weight.cut.off=weight.cut.off)
   )
   
   return(network)
 }
 
 #function to create the igraph network
-.subNetwork <- function(rnaseq, mut_status, cor_method, weight.cut.off){
+.subNetwork <- function(rnaseq, mut_status, common_neighbor, cor_method, weight.cut.off){
   rnaseq_1 <- rnaseq[mut_status, common_neighbor]
   rnaseq_1 <- rnaseq[, !sapply(rnaseq_1, function(x) { sd(x) == 0} )]
   rnaseq_cor <- cor(rnaseq_1, method = cor_method)
