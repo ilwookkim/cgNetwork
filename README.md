@@ -47,7 +47,10 @@ cgStudy(cgds, studyID) #lists the available profiles and caselists
 profile_name <- "mRNA expression (RNA Seq V2 RSEM)"
 
 countdata <- cgData(cgds, studyID, profile_name, genes=TP53_pathway)
+<<<<<<< HEAD
 countdata <- countdata[apply(countdata,1,function(x) !all(is.na(x))),]
+=======
+>>>>>>> 96c973d2d296a1caab2b9fd4a43f490df205e63b
 mut_df <- cgMutation(cgds, studyID, genes="TP53")
 mut_df <- subset(mut_df, rownames(mut_df) %in% colnames(countdata))
 ```

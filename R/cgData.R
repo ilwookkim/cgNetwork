@@ -38,5 +38,7 @@ cgData <- function(cgds, cancer_study_id, profile_name, caselist_name="All sampl
   data1 <- Reduce(function(x,y) transform(merge(x,y,by=0), row.names=Row.names, Row.names=NULL), data1) #successively merge all tables
   data1[,1:ncol(data1)] <- apply(data1, 2, function(x) ifelse(x %in% "NaN",NA,x)) #change NaNs to NAs
   #==output==#
-  as.data.frame(data1)
+  data1 <- as.data.frame(data1)
+  data1 <- data1[apply(data1,1,function(x) !all(is.na(x))),]
+  as.data.frame(t(data1))
 }

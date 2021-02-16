@@ -19,6 +19,7 @@ neighbor_finder <- function(countdata, gene=gene_of_interest, cor.cut.off=.39, w
   if(!t){
     countdata_t <- data.frame(countdata)
   } else {
+    countdata <- data.frame(na.omit(countdata))
     countdata_t <- data.frame(t(countdata))
   }
   countdata_t <- countdata_t[, !sapply(countdata_t, function(x) { sd(x) == 0} )]
