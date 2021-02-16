@@ -2,7 +2,7 @@
 Gene co-expression network analysis by mutation status
 
 ## **Abstract**
-There are number of gene networks that regulates by mutation by transcription target genes in various cancer. This package aims to analyze these networks under the certain mutation status.
+There are number of gene networks that regulates by mutation of transcription target genes in various cancer. This package aims to analyze the network of interesting gene under the certain mutation status.
 
 ## **Approach**
 In order to figure out these network, we analyze cancer RNAseq data from various database. 
@@ -51,7 +51,7 @@ mut_df <- cgMutation(cgds, studyID, genes="TP53")
 ```
 
 Option 2: Using the [TCGABiolinks package](https://bioconductor.org/packages/release/bioc/html/TCGAbiolinks.html) (Approximately 1 GB of data will be downloaded)
-We obtain the RNA-Seq data via the TCGA_RNAseq_RSEM function and mutation information via mutation_info function (there are four pipelines: muse, varscan2, somaticsniper, mutect2).
+We obtain the RNA-Seq data via the TCGA_RNAseq_RSEM function and mutation information via mutation_info function. Somatic Mutation Calling Workflow as tumor-normal pairs. Variant calling is performed using four separate pipelines (muse, varscan2, somaticsniper, mutect2), see details : [Somatic Mutation Calling Workflow](https://docs.gdc.cancer.gov/Data/Bioinformatics_Pipelines/DNA_Seq_Variant_Calling_Pipeline/#somatic-variant-calling-workflow).
 ```r
 studyID = "LAML"
 countdata <- TCGA_RNAseq_RSEM(studyID)
