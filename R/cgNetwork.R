@@ -24,7 +24,7 @@ cgNetwork <- function(countdata, mut_df, common_neighbor, cor_method = "spearman
 
   na_omit_df <- na.omit(countdata)
   rnaseq <- data.frame(t(na_omit_df))
-
+  
   network <- list(
     wtNetwork  = .subNetwork(rnaseq=rnaseq, mut_status=wt,  common_neighbor=common_neighbor, cor_method=cor_method, weight.cut.off=weight.cut.off),
     mutNetwork = .subNetwork(rnaseq=rnaseq, mut_status=mut, common_neighbor=common_neighbor, cor_method=cor_method, weight.cut.off=weight.cut.off)
@@ -35,12 +35,11 @@ cgNetwork <- function(countdata, mut_df, common_neighbor, cor_method = "spearman
 
 #function to create the igraph network
 .subNetwork <- function(rnaseq, mut_status, common_neighbor, cor_method, weight.cut.off){
-  rnaseq_1 <- rnaseq[mut_status, common_neighbor]
-  rnaseq_1 <- rnaseq[, !sapply(rnaseq_1, function(x) { sd(x) == 0} )]
-  rnaseq_cor <- cor(rnaseq_1, method = cor_method)
-  cor_1 <- rnaseq_cor
-  rm(rnaseq_1, rnaseq_cor)
-  g1 <-  igraph::graph.adjacency(cor_1, weighted=TRUE, mode="lower")
+  rnaseq <- rnaseq[mut_status, common_neighbor]
+  rnaseq <- rnaseq[, !sapply(rnaseq, function(x) { sd(x) == 0} )]
+  rnaseq_cor <- cor(rnaseq, method = cor_method)
+  correl <- rnaseq_cor
+  g1 <- igraph::graph.adjacency(correl, weighted=TRUE, mode="lower")
   g1 <- igraph::delete.edges(g1, igraph::E(g1)[ weight < weight.cut.off ])
   g1 <- igraph::simplify(g1, remove.multiple = TRUE, remove.loops = TRUE)
   g1 <- igraph::delete.vertices(g1, which(igraph::degree(g1)<1))
