@@ -66,15 +66,7 @@ mut_df <- mutation_info(countdata, studyID, gene = mutation_gene, pipeline = "mu
 common_neighbor <- neighbor_finder(countdata, 
                                    gene=gene_of_interest,
                                    cor.cut.off=.39, 
-                                   weight.cut.off=.5, 
-                                   t=FALSE)
-                                   
-# When we use the option 2, the countdata matrix need to be transposed (t=TRUE)                                   
-# common_neighbor <- neighbor_finder(countdata, 
-#                                    gene=gene_of_interest,
-#                                  cor.cut.off=.39, 
-#                                    weight.cut.off=.5, 
-#                                    t=TRUE)                                   
+                                   weight.cut.off=.5)                            
 ```
 
 **Creating the Network**
