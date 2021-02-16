@@ -16,7 +16,7 @@
 #' myMutations <- cgData(cgds, mystudy, genes=c("FLT3","TP53"))
 #' @export
 cgMutation <- function(cgds, cancer_study_id, genes=NA, caselist_name="Samples with mutation data"){
-  outtable <- cgData(cgds=cgds, cancer_study_id=cancer_study_id, profile_name="Mutations", caselist_name=caselist_name, genes)
+  outtable <- cgData(cgds=cgds, cancer_study_id=cancer_study_id, profile_name="Mutations", caselist_name=caselist_name, genes=genes, dropNApatients=F)
   outtable <- t(outtable)
   outtable <- apply(outtable, 2, function(x) ifelse(is.na(x), 0, 1))
   colnames(outtable) <- paste0(colnames(outtable), "_mutation_status")
