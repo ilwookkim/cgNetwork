@@ -43,7 +43,7 @@ Option 1: Using cgdsr (allows for different data and is much faster)
 cgds <- cgBase() #lists the available studies
 studyID <- "laml_tcga"
 
-cgStudy(cgds, studyID) #lists the available profiles and caselists
+cgInfo(cgds, studyID) #lists the available profiles and caselists
 profile_name <- "mRNA expression (RNA Seq V2 RSEM)"
 
 countdata <- cgData(cgds, studyID, profile_name, genes=TP53_pathway)
