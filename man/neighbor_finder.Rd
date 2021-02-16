@@ -5,25 +5,33 @@
 \title{neighbor_finder}
 \usage{
 neighbor_finder(
-  big_cor_matrix,
-  gene = "CDKN1A",
-  cor_method = "spearman",
+  countdata,
+  gene = gene_of_interest,
   cor.cut.off = 0.39,
-  weight.cut.off = 0.5
+  weight.cut.off = 0.5,
+  t = TRUE
 )
 }
 \arguments{
-\item{big_cor_matrix}{bigmatrix (bigmemory package) of Spearman's correlation coefficient from TCGA RNAseq countdata}
+\item{countdata}{RNAseq countdata}
 
-\item{gene}{Interesting gene to find network. Defaults to "CDKN1A".}
-
-\item{cor_method}{correlation coeffiecint method "spearman" or "pearson". Defaults to "spearman"}
+\item{gene}{string, gene of interest to find a network for.}
 
 \item{cor.cut.off}{cut off value of correlation coeffiecint to build network. Defaults to .39}
 
 \item{weight.cut.off}{cut off value of network weight to reduce edges. Defaults to .5}
+
+\item{t}{Matrix Transpose}
+}
+\value{
+character vector, genes that are considered neighbors of the gene of interest (including the gene of interest itself).
 }
 \description{
+Imports:
+igraph,
+bigmemory
+}
+\details{
 This function allows the user to find neighbor genes network of interested gene.
 }
 \examples{
