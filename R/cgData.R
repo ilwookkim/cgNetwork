@@ -39,6 +39,6 @@ cgData <- function(cgds, cancer_study_id, profile_name, caselist_name="All sampl
   data1[,1:ncol(data1)] <- apply(data1, 2, function(x) ifelse(x %in% "NaN",NA,x)) #change NaNs to NAs
   #==output==#
   data1 <- as.data.frame(data1)
-  data1 <- data1[apply(data1,1,function(x) !all(is.na(x))),,drop=False]
+  data1 <- data1[apply(data1,1,function(x) !all(is.na(x))),,drop=FALSE]
   as.data.frame(t(data1))
 }
