@@ -12,7 +12,7 @@
 #' @param t Matrix Transpose
 #' @return character vector, genes that are considered neighbors of the gene of interest (including the gene of interest itself).
 #' @examples
-#' common_neighbor <- neighbor_finder(big_cor_matrix, gene="CDKN1A", cor_method = "spearman", cor.cut.off=.39, weight.cut.off=.5)
+#' common_neighbor <- neighbor_finder(big_cor_matrix, gene="CDKN1A", cor_method = "spearman", cor.cut.off=.39, weight.cut.off=.5, t=TRUE)
 #' @export
 
 neighbor_finder <- function(countdata, gene=gene_of_interest, cor.cut.off=.39, weight.cut.off=.5, t=TRUE){
