@@ -1,12 +1,10 @@
 # **cgNetwork**
-Gene co-expression network analysis by mutation status
-
-## **Abstract**
-There are number of gene networks that regulates by mutation of transcription target genes in various cancer. This package aims to analyze the network of interesting gene under the certain mutation status.
+Weighted gene co-expression network analysis by mutation status
 
 ## **Approach**
-In order to figure out these network, we analyze cancer RNAseq data from various database. 
-  1. Retrive RNAseq data from various database.
+There are number of novel gene co-expression networks that regulates by transcriptional regulation genes. This package aims to analyze these networks of interesting gene that possibly interacts with and regulated by transcriptional regulation genes. In order to figure out these network, we analyze RNAseq data in dynamic gene status model such as cancers that has significant deregulation of these processes. 
+
+  1. Retrive RNAseq data from various cancer database.
   1. RNAseq by **mutation_gene** mutation.
   1. Build network around **gene_of_interest**
   1. Comparison Network of **gene_of_interest** by mutation of **mutation_gene** 
@@ -60,6 +58,8 @@ mut_df <- mutation_info(countdata, studyID, gene = mutation_gene, pipeline = "mu
 ```
 
 **Neighbor genes finder**
+
+Finding neighbor genes network around the interesting gene using weighted network function from igraph package.
 
 ``` r
 common_neighbor <- neighbor_finder(countdata, gene=gene_of_interest,
