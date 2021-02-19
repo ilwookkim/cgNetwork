@@ -1,9 +1,9 @@
 Package: cgNetwork
 Title: Gene co-expression network
 Version: 1.1.0
-Authors: c(
-    person("Ilwook", "Kim", email="ilwook.kim.1982@gmail.com", role = c("aut","cre")),
-    person("Nicolas", "Huber", role = c("aut","cre")),
+Authors@R: c(
+    person("Ilwook", "Kim", role = c("aut","cre"), email = "ilwook.kim.1982@gmail.com"),
+    person("Nicolas", "Huber", role = "aut"),
     person("‪Vasily", "Romanov" , role = "aut"))
 Description: Gene co-expression network analysis in the context of gene mutation and selected GO Term 
 License: `use_mit_license()`, `use_gpl3_license()` or friends to
