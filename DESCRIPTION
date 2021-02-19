@@ -18,7 +18,7 @@ Imports:
   TCGAbiolinks, bigmemory, cgdsr, dplyr, org.Hs.eg.db (>=	3.10.0), shiny, 
   visNetwork, magrittr, igraph
 Suggests:
-  downloader (>= 0.4), graphics, EDASeq, RCy3, fgsea,
+  downloader (>= 0.4), graphics, EDASeq, RCy3, fgsea, AnnotationDbi (>= 1.52.0),
   tibble, data.table, plyr, knitr, methods, ggplot2, stringr (>= 1.0.0),
   IRanges, rvest (>= 0.3.0), stats, R.utils, 
   SummarizedExperiment (>= 1.4.0), readr,
