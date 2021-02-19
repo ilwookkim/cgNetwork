@@ -9,7 +9,6 @@
 #' @param genes genes string vector with genes of interest. Symbols, EntrezIds and EnsemblIds work. If nothing (NA) is provided, all genes in the GO database will be used. This will take some time, so if you only need a specific set of genes, specify it here.
 #' @param caselist_name string, should be chosen so that only samples with mutation data are used.
 #' @return data.frame, each row is a patient, each column is a gene
-#' @details
 #' @examples
 #' cgds <- cgBbase()
 #' mystudy <- "laml_tcga"
