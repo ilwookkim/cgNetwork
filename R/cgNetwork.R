@@ -1,7 +1,5 @@
 #' cgNetwork
 #'
-#' @import igraph
-#'
 #' Find gene networks around gene of interest, one for WT and one for mutated.
 #'
 #' @param data.frame, output of the cgData or TCGA_RNAseq_RSEM function.
@@ -13,6 +11,7 @@
 #' @examples
 #' cgNetwork_list <- cgNetwork(countdata, mut_df, common_neighbor, cor_method = "spearman", weight.cut.off=.5)
 #' @export
+#' @import igraph
 
 cgNetwork <- function(countdata, mut_df, common_neighbor, cor_method = "spearman", weight.cut.off=.5){
   # make sure that the mut_df only has genes that occur in the countdata

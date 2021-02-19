@@ -1,7 +1,5 @@
 #' mutation_info Function
 #'
-#' @import TCGAbiolinks
-#'
 #' This function allows the user to download mutation infomation.
 #' @param countdata TCGA RNAseq countdata. i.g countdata <- TCGA_RNAseq_RSEM("STAD")
 #' @param study_name name of TCGA study. Defaults to "STAD" (Stomach adenocarcinoma). Find more TCGA Study Abbreviations: https://gdc.cancer.gov/resources-tcga-users/tcga-code-tables/tcga-study-abbreviations
@@ -11,6 +9,7 @@
 #' mut_info <- mutation_info(countdata, "STAD", "TP53", "mutect2")
 #' mut_info <- mutation_info(countdata, "PAAD", "KRAS","muse")
 #' @export
+#' @import TCGAbiolinks
 
 mutation_info <- function(countdata, study_name="STAD", gene="TP53", pipelines = "mutect2"){
   maf <- GDCquery_Maf(study_name, pipelines = pipelines)

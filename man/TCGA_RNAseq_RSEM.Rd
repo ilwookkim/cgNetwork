@@ -10,7 +10,7 @@ TCGA_RNAseq_RSEM(study_name = "STAD")
 \item{study_name}{name of TCGA study. Defaults to STAD (Stomach adenocarcinoma). Find more TCGA Study Abbreviations: https://gdc.cancer.gov/resources-tcga-users/tcga-code-tables/tcga-study-abbreviations}
 }
 \description{
-TCGA_RNAseq_RSEM Function
+This function allows the user to download TCGA RNAseq data.
 }
 \examples{
 countdata <- TCGA_RNAseq_RSEM("STAD")

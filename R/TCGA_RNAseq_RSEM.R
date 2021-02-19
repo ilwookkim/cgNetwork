@@ -1,13 +1,12 @@
 #' TCGA_RNAseq_RSEM Function
 #'
-#' @import TCGAbiolinks
-#'
 #' This function allows the user to download TCGA RNAseq data.
 #' @param study_name name of TCGA study. Defaults to STAD (Stomach adenocarcinoma). Find more TCGA Study Abbreviations: https://gdc.cancer.gov/resources-tcga-users/tcga-code-tables/tcga-study-abbreviations
 #' @examples
 #' countdata <- TCGA_RNAseq_RSEM("STAD")
 #' countdata <- TCGA_RNAseq_RSEM("PAAD")
 #' @export
+#' @import TCGAbiolinks
 
 TCGA_RNAseq_RSEM <- function(study_name="STAD"){
   query <- GDCquery(project = paste0("TCGA-",study_name),

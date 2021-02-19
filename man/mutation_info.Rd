@@ -21,7 +21,7 @@ mutation_info(
 \item{pipeline}{Variant calling is performed using several separate pipelines; muse, varscan2, somaticsniper, mutect2. Default to mutect2. Find details: https://docs.gdc.cancer.gov/Data/Bioinformatics_Pipelines/DNA_Seq_Variant_Calling_Pipeline/#somatic-variant-calling-workflow}
 }
 \description{
-mutation_info Function
+This function allows the user to download mutation infomation.
 }
 \examples{
 mut_info <- mutation_info(countdata, "STAD", "TP53", "mutect2")

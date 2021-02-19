@@ -1,7 +1,5 @@
 #' output data of the specified type
 #'
-#' @import cgdsr org.Hs.eg.db
-#'
 #' @param cgds object, output from the cgBase() function
 #' @param cancer_study_id string, the ID as given in the first column of the cgBase() printout
 #' @param profile_name string, profile name (not ID) to be used (obtained from the printout of the cgStudy() function)
@@ -15,6 +13,7 @@
 #' cgStudy(cgds, mystudy)
 #' myData <- cgData(cgds, mystudy, profile_name="mRNA expression (RNA Seq RPKM)", genes=c("FLT3","TP53"))
 #' @export
+#' @import cgdsr org.Hs.eg.db
 cgData <- function(cgds, cancer_study_id, profile_name, caselist_name="All samples", genes=NA, dropNApatients=T){
   #if no genes are specified, get all genes from GO
   if(is.na(genes)[1]) genes <- as.vector(unique(unlist(as.list(org.Hs.egGO2EG))))
