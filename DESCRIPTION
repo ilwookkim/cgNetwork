@@ -18,6 +18,6 @@ Imports:
   TCGAbiolinks, visNetwork, shiny, bigmemory, dplyr, magrittr,
   downloader (>= 0.4), graphics, EDASeq, igraph, RCy3, fgsea,
   tibble, data.table, plyr, knitr, methods, ggplot2, stringr (>= 1.0.0),
-  IRanges, rvest (>= 0.3.0), stats, R.utils,
+  IRanges, rvest (>= 0.3.0), stats, R.utils, cgdsr, org.Hs.eg.db,
   SummarizedExperiment (>= 1.4.0), readr,
-  tools, tidyr, xml2, tidyverse,gplots
+  tools, tidyr, xml2, tidyverse, gplots

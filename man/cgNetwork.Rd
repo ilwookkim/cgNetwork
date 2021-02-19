@@ -13,6 +13,8 @@ cgNetwork(
 )
 }
 \arguments{
+\item{countdata, }{output of the cgData or TCGA_RNAseq_RSEM function.}
+
 \item{mut_df}{data.frame, output of the cgMutation or mutation_info function.}
 
 \item{common_neighbor}{character vector, names of genes considered neighbors of the gene of interest. Output of the neighbor_finder function.}
@@ -20,8 +22,6 @@ cgNetwork(
 \item{cor_method}{string, correlation coeffiecint method "spearman" or "pearson". Defaults to "spearman".}
 
 \item{weight.cut.off}{numeric, cut off value of network weight to reduce edges. Defaults to 0.5.}
-
-\item{data.frame, }{output of the cgData or TCGA_RNAseq_RSEM function.}
 }
 \value{
 list of two igraph objects
