@@ -28,7 +28,7 @@ mutation_gene = "TP53"
 
 **Acquire Data**
 
-For the tutorial we only use a subset of genes (Transcriptional Regulation by TP53).
+For the tutorial we only use a subset of genes ([Transcriptional Regulation by TP53 : Reactome R-HSA-3700989](https://reactome.org/content/detail/R-HSA-3700989)).
 ``` r 
 library(fgsea)
 gmt.file <- url("https://raw.githubusercontent.com/ilwookkim/cgNetwork/main/data/ReactomePathways.gmt", method="libcurl")
