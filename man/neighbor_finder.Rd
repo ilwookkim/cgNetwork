@@ -8,8 +8,7 @@ neighbor_finder(
   countdata,
   gene = gene_of_interest,
   cor.cut.off = 0.39,
-  weight.cut.off = 0.5,
-  t = TRUE
+  weight.cut.off = 0.5
 )
 }
 \arguments{
@@ -35,5 +34,5 @@ bigmemory
 This function allows the user to find neighbor genes network of interested gene.
 }
 \examples{
-common_neighbor <- neighbor_finder(big_cor_matrix, gene="CDKN1A", cor_method = "spearman", cor.cut.off=.39, weight.cut.off=.5)
+common_neighbor <- neighbor_finder(big_cor_matrix, gene="CDKN1A", cor_method = "spearman", cor.cut.off=.39, weight.cut.off=.5, t=TRUE)
 }

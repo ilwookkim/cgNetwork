@@ -9,7 +9,8 @@ cgData(
   cancer_study_id,
   profile_name,
   caselist_name = "All samples",
-  genes = NA
+  genes = NA,
+  dropNApatients = T
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ cgData(
 \item{caselist_name}{string, caselist name (not ID) to be used (obtained from the printout of the cgStudy() function)}
 
 \item{genes}{string vector with genes of interest. Symbols, EntrezIds and EnsemblIds work. If nothing (NA) is provided, all genes in the GO database will be used. This will take some time, so if you only need a specific set of genes, specify it here.}
+
+\item{dropNApatients}{boolean, should patients with only NA values be dropped? For mutation data, turn this to FALSE, otherwise non-mutated patients will drop out.}
 }
 \value{
 data.frame, each row is a patient, each column is a gene
