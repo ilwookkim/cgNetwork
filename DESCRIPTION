@@ -15,11 +15,11 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 biocViews: 
 Imports: 
-  TCGAbiolinks, visNetwork, shiny, bigmemory, dplyr, magrittr,
+  TCGAbiolinks, bigmemory, cgdsr, dplyr, org.Hs.eg.db (>=	3.10.0), shiny, 
+  visNetwork, magrittr, igraph
+Suggests:
   downloader (>= 0.4), graphics, EDASeq, RCy3, fgsea,
   tibble, data.table, plyr, knitr, methods, ggplot2, stringr (>= 1.0.0),
-  IRanges, rvest (>= 0.3.0), stats, R.utils, cgdsr, org.Hs.eg.db,
+  IRanges, rvest (>= 0.3.0), stats, R.utils, 
   SummarizedExperiment (>= 1.4.0), readr,
   tools, tidyr, xml2, tidyverse, gplots
-Suggests:
-  igraph
