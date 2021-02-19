@@ -10,7 +10,8 @@
 #' @examples
 #' common_neighbor <- neighbor_finder(big_cor_matrix, gene="CDKN1A", cor_method = "spearman", cor.cut.off=.39, weight.cut.off=.5, t=TRUE)
 #' @export
-#' @import igraph bigmemory
+#' @import bigmemory
+#' @importFrom igraph graph_from_adjacency_matrix simplify delete_edges neighbors E V
 
 neighbor_finder <- function(countdata, gene=gene_of_interest, cor.cut.off=.39, weight.cut.off=.5){
 

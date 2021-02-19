@@ -7,8 +7,9 @@
 #' @examples
 #' DiNetplot(cgNetwork_list)
 #' @export
-#' @import dplyr shiny igraph visNetwork
+#' @import dplyr shiny visNetwork
 #' @importFrom magrittr "%>%"
+#' @importFrom igraph V get.data.frame cluster_louvain membership
 
 DiNetplot <- function(cgNetwork_list){
   ui <- shiny::fluidPage(
