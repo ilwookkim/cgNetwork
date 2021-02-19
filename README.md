@@ -59,7 +59,7 @@ mut_df <- mutation_info(countdata, studyID, gene = mutation_gene, pipeline = "mu
 
 **Neighbor genes finder**
 
-Finding neighbor genes network around the interesting gene using weighted network function from igraph package.
+Finding neighbor genes network around the interesting gene using weighted network function from [igraph package](https://igraph.org/r/).
 
 ``` r
 common_neighbor <- neighbor_finder(countdata, gene=gene_of_interest,
