@@ -13,8 +13,7 @@ cgBase(address = "https://www.cbioportal.org/")
 cdgs object, and prints the first 2 columns of the cdgs object (the first column contains the IDs, to be used in later functions)
 }
 \description{
-Imports:
-cgdsr
+create CGDS object
 }
 \details{
 uses cgdsr::CGDS(address)

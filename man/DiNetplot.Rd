@@ -14,14 +14,7 @@ DiNetplot(cgNetwork_list)
 \item{mut_gene}{string, gene by which patients should be separated. There will be one network for WT and one for mutated.}
 }
 \description{
-Imports:
-shiny,
-igraph,
-dplyr,
-visNetwork
-}
-\details{
-Displays an interactive network plot.
+DiNetplot
 }
 \examples{
 DiNetplot(cgNetwork_list)

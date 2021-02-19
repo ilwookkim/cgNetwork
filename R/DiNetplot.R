@@ -23,38 +23,38 @@ DiNetplot <- function(cgNetwork_list){
   server <- function(input, output) {
 
     g1 <- cgNetwork_list[[1]]
-    nodes1 <- data.frame(igraph::V(g1)$name, label=NA)
+    nodes1 <- data.frame(V(g1)$name, label=NA)
     colnames(nodes1) <- c("id", "label")
     nodes1$label <- nodes1$id
 
     g2 <- cgNetwork_list[[2]]
-    nodes2 <- data.frame(igraph::V(g2)$name, label=NA)
+    nodes2 <- data.frame(V(g2)$name, label=NA)
     colnames(nodes2) <- c("id", "label")
     nodes2$label <- nodes2$id
 
     #Edges
-    edges1 <- igraph::get.data.frame(g1)
+    edges1 <- get.data.frame(g1)
     colnames(edges1) <- c("from", "to", "width")
 
-    edges2 <- igraph::get.data.frame(g2)
+    edges2 <- get.data.frame(g2)
     colnames(edges2) <- c("from", "to", "width")
 
     #Clustering
-    cluster1 <- igraph::cluster_louvain(g1)
-    cluster_df1 <- data.frame(as.list(igraph::membership(cluster1)))
+    cluster1 <- cluster_louvain(g1)
+    cluster_df1 <- data.frame(as.list(membership(cluster1)))
     cluster_df1 <- as.data.frame(t(cluster_df1))
     cluster_df1$label <- rownames(cluster_df1)
 
-    cluster2 <- igraph::cluster_louvain(g2)
-    cluster_df2 <- data.frame(as.list(igraph::membership(cluster2)))
+    cluster2 <- cluster_louvain(g2)
+    cluster_df2 <- data.frame(as.list(membership(cluster2)))
     cluster_df2 <- as.data.frame(t(cluster_df2))
     cluster_df2$label <- rownames(cluster_df2)
 
     #Create group column
-    nodes1 <- dplyr::left_join(nodes1, cluster_df1, by = "label")
+    nodes1 <- left_join(nodes1, cluster_df1, by = "label")
     colnames(nodes1)[3] <- "group"
 
-    nodes2 <- dplyr::left_join(nodes2, cluster_df2, by = "label")
+    nodes2 <- left_join(nodes2, cluster_df2, by = "label")
     colnames(nodes2)[3] <- "group"
 
     output$vis1 <- visNetwork::renderVisNetwork(

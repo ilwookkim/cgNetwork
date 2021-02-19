@@ -1,5 +1,7 @@
 #' TCGA_RNAseq_RSEM Function
 #'
+#' @import TCGAbiolinks
+#'
 #' This function allows the user to download TCGA RNAseq data.
 #' @param study_name name of TCGA study. Defaults to STAD (Stomach adenocarcinoma). Find more TCGA Study Abbreviations: https://gdc.cancer.gov/resources-tcga-users/tcga-code-tables/tcga-study-abbreviations
 #' @examples
@@ -8,19 +10,19 @@
 #' @export
 
 TCGA_RNAseq_RSEM <- function(study_name="STAD"){
-  query <- TCGAbiolinks::GDCquery(project = paste0("TCGA-",study_name),
+  query <- GDCquery(project = paste0("TCGA-",study_name),
                                   data.category = "Gene expression",
                                   data.type = "Gene expression quantification",
                                   platform = "Illumina HiSeq",
                                   file.type  = "results",
                                   experimental.strategy = "RNA-Seq",
                                   legacy = TRUE)
-  TCGAbiolinks::GDCdownload(query, files.per.chunk = 10)
-  expdat <- TCGAbiolinks::GDCprepare(query = query, save = FALSE)
+  GDCdownload(query, files.per.chunk = 10)
+  expdat <- GDCprepare(query = query, save = FALSE)
   # Transform the data to get raw count table (RSEM)
-  dataPrep <- TCGAbiolinks::TCGAanalyze_Preprocessing(object = expdat)
-  countdata <- TCGAbiolinks::TCGAanalyze_Normalization(tabDF = dataPrep,
-                                                       geneInfo = TCGAbiolinks::geneInfo,
+  dataPrep <- TCGAanalyze_Preprocessing(object = expdat)
+  countdata <- TCGAanalyze_Normalization(tabDF = dataPrep,
+                                                       geneInfo = geneInfo,
                                                        method = "geneLength")
   samples <- colnames(countdata)
   samples <- sub("^(.{15}).*", "\\1", samples)

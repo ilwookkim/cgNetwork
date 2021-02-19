@@ -30,9 +30,7 @@ cgData(
 data.frame, each row is a patient, each column is a gene
 }
 \description{
-Imports:
-cgdsr,
-org.Hs.eg.db
+output data of the specified type
 }
 \examples{
 cgds <- cgBbase()

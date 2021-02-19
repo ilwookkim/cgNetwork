@@ -1,10 +1,9 @@
 #' cgNetwork
 #'
-#' Imports:
-#' igraph
+#' @import igraph
 #'
 #' Find gene networks around gene of interest, one for WT and one for mutated.
-#' 
+#'
 #' @param data.frame, output of the cgData or TCGA_RNAseq_RSEM function.
 #' @param mut_df data.frame, output of the cgMutation or mutation_info function.
 #' @param common_neighbor character vector, names of genes considered neighbors of the gene of interest. Output of the neighbor_finder function.
@@ -18,18 +17,18 @@
 cgNetwork <- function(countdata, mut_df, common_neighbor, cor_method = "spearman", weight.cut.off=.5){
   # make sure that the mut_df only has genes that occur in the countdata
   mut_df <- subset(mut_df, rownames(mut_df) %in% colnames(countdata))
-  
+
   wt  <- rownames(mut_df)[which(mut_df[,1]==0)]
   mut <- rownames(mut_df)[which(mut_df[,1]==1)]
 
   na_omit_df <- na.omit(countdata)
   rnaseq <- data.frame(t(na_omit_df))
-  
+
   network <- list(
     wtNetwork  = .subNetwork(rnaseq=rnaseq, mut_status=wt,  common_neighbor=common_neighbor, cor_method=cor_method, weight.cut.off=weight.cut.off),
     mutNetwork = .subNetwork(rnaseq=rnaseq, mut_status=mut, common_neighbor=common_neighbor, cor_method=cor_method, weight.cut.off=weight.cut.off)
   )
-  
+
   return(network)
 }
 
@@ -39,9 +38,9 @@ cgNetwork <- function(countdata, mut_df, common_neighbor, cor_method = "spearman
   rnaseq <- rnaseq[, !sapply(rnaseq, function(x) { sd(x) == 0} )]
   rnaseq_cor <- cor(rnaseq, method = cor_method)
   correl <- rnaseq_cor
-  g1 <- igraph::graph.adjacency(correl, weighted=TRUE, mode="lower")
-  g1 <- igraph::delete.edges(g1, igraph::E(g1)[ weight < weight.cut.off ])
-  g1 <- igraph::simplify(g1, remove.multiple = TRUE, remove.loops = TRUE)
-  g1 <- igraph::delete.vertices(g1, which(igraph::degree(g1)<1))
+  g1 <- graph.adjacency(correl, weighted=TRUE, mode="lower")
+  g1 <- delete.edges(g1, E(g1)[ weight < weight.cut.off ])
+  g1 <- simplify(g1, remove.multiple = TRUE, remove.loops = TRUE)
+  g1 <- delete.vertices(g1, which(degree(g1)<1))
   return(g1)
 }

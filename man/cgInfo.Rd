@@ -15,8 +15,7 @@ cgInfo(cgds, cancer_study_id)
 nothing, but prints out two tables with information for the follow-up function
 }
 \description{
-Imports:
-cgdsr
+get info about a study
 }
 \details{
 uses cgdsr::getCancerStudies(cgds)

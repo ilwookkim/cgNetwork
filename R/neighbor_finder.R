@@ -1,8 +1,6 @@
 #' neighbor_finder
 #'
-#' Imports:
-#' igraph,
-#' bigmemory
+#' @import igraph bigmemory
 #'
 #' This function allows the user to find neighbor genes network of interested gene.
 #' @param countdata RNAseq countdata
@@ -20,18 +18,18 @@ neighbor_finder <- function(countdata, gene=gene_of_interest, cor.cut.off=.39, w
   countdata <- data.frame(na.omit(countdata))
   countdata_t <- data.frame(t(countdata))
   countdata_t <- countdata_t[, !sapply(countdata_t, function(x) { sd(x) == 0} )]
-  
-  big_cor_matrix <- bigmemory::as.big.matrix(cor(countdata_t, method = "spearman"))
+
+  big_cor_matrix <- as.big.matrix(cor(countdata_t, method = "spearman"))
 
   #check if the gene is at all present. Otherwise there would be a calculation first (which might take long) and then the error.
   if(!any(rownames(big_cor_matrix[,]) %in% gene)) stop("Your gene of interest is not in the matrix.")
 
   big_cor_matrix[which(big_cor_matrix[,] == 1)] <- 0
   big_cor_matrix[which(big_cor_matrix[,] < cor.cut.off)] <- 0
-  net <- igraph::graph_from_adjacency_matrix(big_cor_matrix[,], mode='undirected', weighted = T, diag=F)
-  net <- igraph::simplify(net, remove.multiple = T, remove.loops = T)
-  net.sp <- igraph::delete_edges(net, igraph::E(net)[weight<weight.cut.off])
-  neigh.nodes <- igraph::neighbors(net.sp, igraph::V(net.sp)[gene])
+  net <- graph_from_adjacency_matrix(big_cor_matrix[,], mode='undirected', weighted = T, diag=F)
+  net <- simplify(net, remove.multiple = T, remove.loops = T)
+  net.sp <- delete_edges(net, E(net)[weight<weight.cut.off])
+  neigh.nodes <- neighbors(net.sp, V(net.sp)[gene])
   common_neig <- c(names(neigh.nodes),gene)
   return(common_neig)
 }

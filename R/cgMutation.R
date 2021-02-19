@@ -1,8 +1,6 @@
 #' convenient shortcut to find mutations
 #'
-#' Imports:
-#' cgdsr,
-#' org.Hs.eg.db
+#' @import cgdsr
 #'
 #' @param cgds object, output from the cgBase() function
 #' @param cancer_study_id string, the as given in the cgBase() printout

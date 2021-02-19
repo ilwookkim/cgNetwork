@@ -1,8 +1,6 @@
 #' output data of the specified type
 #'
-#' Imports:
-#' cgdsr,
-#' org.Hs.eg.db
+#' @import cgdsr org.Hs.eg.db
 #'
 #' @param cgds object, output from the cgBase() function
 #' @param cancer_study_id string, the ID as given in the first column of the cgBase() printout
@@ -19,13 +17,13 @@
 #' @export
 cgData <- function(cgds, cancer_study_id, profile_name, caselist_name="All samples", genes=NA, dropNApatients=T){
   #if no genes are specified, get all genes from GO
-  if(is.na(genes)[1]) genes <- as.vector(unique(unlist(as.list(org.Hs.eg.db::org.Hs.egGO2EG))))
+  if(is.na(genes)[1]) genes <- as.vector(unique(unlist(as.list(org.Hs.egGO2EG))))
   nmath <- floor(length(genes)/400)
   nmath <- seq(0,nmath)*400
 
   #==get profile and caselist ID (type of experiment)==#
-  profileTable  <- cgdsr::getGeneticProfiles(cgds, cancer_study_id)
-  caselistTable <- cgdsr::getCaseLists(      cgds, cancer_study_id)
+  profileTable  <- getGeneticProfiles(cgds, cancer_study_id)
+  caselistTable <- getCaseLists(      cgds, cancer_study_id)
   profileId  <- subset(profileTable, genetic_profile_name %in% profile_name )$genetic_profile_id
   caselistId <- subset(caselistTable,      case_list_name %in% caselist_name)$case_list_id
   print( paste("profile ID:",  profileId ) )
@@ -34,7 +32,7 @@ cgData <- function(cgds, cancer_study_id, profile_name, caselist_name="All sampl
   data1 <- lapply(nmath, function(x) {
     if(x%%4000==0) print(paste("getting genes",x+1,"to",min(x+4000,length(genes))))
     genes400 <- as.vector(na.omit(genes[seq(x+1,x+400)]))
-    cgtable <- cgdsr::getProfileData(x=cgds, genes=genes400, geneticProfiles=profileId, caseList=caselistId)
+    cgtable <- getProfileData(x=cgds, genes=genes400, geneticProfiles=profileId, caseList=caselistId)
   })
   data1 <- Reduce(function(x,y) transform(merge(x,y,by=0), row.names=Row.names, Row.names=NULL), data1) #successively merge all tables
   data1[,1:ncol(data1)] <- apply(data1, 2, function(x) ifelse(x %in% "NaN",NA,x)) #change NaNs to NAs

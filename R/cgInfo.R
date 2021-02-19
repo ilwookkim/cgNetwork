@@ -1,7 +1,6 @@
 #' get info about a study
 #'
-#' Imports:
-#' cgdsr
+#' @import cgdsr
 #'
 #' @param cgds object, output from the cgBase() function
 #' @param cancer_study_id string, the ID as given in the first column of the cgBase() printout
@@ -15,7 +14,7 @@
 cgInfo <- function(cgds, cancer_study_id){
   #==user info print==#
   cat("\n## Profiles:\n")
-  print(cgdsr::getGeneticProfiles(cgds, cancer_study_id)["genetic_profile_name"])
+  print(getGeneticProfiles(cgds, cancer_study_id)["genetic_profile_name"])
   cat("## Samples:\n")
-  print(cgdsr::getCaseLists      (cgds, cancer_study_id)["case_list_name"])
+  print(getCaseLists      (cgds, cancer_study_id)["case_list_name"])
 }
