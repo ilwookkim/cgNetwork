@@ -101,6 +101,6 @@ Example shiny server: https://ilwookkim.shinyapps.io/dinetplot/
   1. Press Start
   1. export image
 
-![cytoscape_Diffany_example](/media/inst/extdata/cytoscape_Diffany_example.png "cytoscape_Diffany_example")
+<img src="inst/extdata/cytoscape_Diffany_example.png"/>
 
   Red: Up-regulate in Mut - Green: Down-regulate in Mut
