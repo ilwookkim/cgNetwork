@@ -31,7 +31,7 @@ mutation_gene = "TP53"
 For the tutorial we only use a subset of genes ([Transcriptional Regulation by TP53 : Reactome R-HSA-3700989](https://reactome.org/content/detail/R-HSA-3700989)).
 ``` r 
 library(fgsea)
-gmt.file <- url("https://raw.githubusercontent.com/ilwookkim/cgNetwork/main/data/ReactomePathways.gmt", method="libcurl")
+gmt.file <- url("https://raw.githubusercontent.com/ilwookkim/cgNetwork/main/inst/extdata/ReactomePathways.gmt", method="libcurl")
 TP53_pathway <- gmtPathways(gmt.file)[["Transcriptional Regulation by TP53"]]
 ```
 
@@ -74,7 +74,7 @@ cgNetwork_list <- cgNetwork(countdata, mut_df, common_neighbor)
 DiNetplot(cgNetwork_list)
 ```
 
-<img src="data/DiNetwork_example.png"/>
+<img src="inst/extdata/DiNetwork_example.png"/>
 
 Example shiny server: https://ilwookkim.shinyapps.io/dinetplot/
 
@@ -101,6 +101,6 @@ Example shiny server: https://ilwookkim.shinyapps.io/dinetplot/
   1. Press Start
   1. export image
 
-<img src="data/cytoscape_Diffany_example.png"/>
+<img src="inst/extdata/cytoscape_Diffany_example.png"/>
 
   Red: Up-regulate in Mut - Green: Down-regulate in Mut
