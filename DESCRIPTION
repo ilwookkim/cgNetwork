@@ -6,7 +6,7 @@ Authors@R: c(
     person("Nicolas", "Huber", role = "aut"),
     person("‪Vasily", "Romanov" , role = "aut"))
 Description: Gene co-expression network analysis in the context of gene mutation and selected GO Term 
-License: GPL-3 + file LICENSE
+License: GPL-2
 Depends: R (>= 3.6)
 Encoding: UTF-8
 LazyData: true
