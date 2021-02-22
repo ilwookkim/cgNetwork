@@ -1,7 +1,3 @@
-<!-- badges: start -->
-  [![R-CMD-check](https://github.com/ilwookkim/cgNetwork/workflows/R-CMD-check/badge.svg)](https://github.com/ilwookkim/cgNetwork/actions)
-  <!-- badges: end -->
-
 # **cgNetwork**
 Weighted gene co-expression network analysis by mutation status
 
