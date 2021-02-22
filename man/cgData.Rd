@@ -36,5 +36,5 @@ output data of the specified type
 cgds <- cgBbase()
 mystudy <- "laml_tcga"
 cgStudy(cgds, mystudy)
-myData <- cgData(cgds, mystudy, profile_name="mRNA expression (RNA Seq RPKM)", genes=c("FLT3","TP53"))
+myData <- cgData(cgds, mystudy, "mRNA expression (RNA Seq RPKM)", "TP53")
 }

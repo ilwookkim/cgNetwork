@@ -9,7 +9,7 @@
 #' @param weight.cut.off numeric, cut off value of network weight to reduce edges. Defaults to 0.5.
 #' @return list of two igraph objects
 #' @examples
-#' cgNetwork_list <- cgNetwork(countdata, mut_df, common_neighbor, cor_method = "spearman", weight.cut.off=.5)
+#' cgNetwork_list <- cgNetwork(countdata, mut_df, common_neighbor, "spearman", 0.5)
 #' @export
 #' @import dplyr
 #' @importFrom igraph graph.adjacency delete.edges V E simplify delete.vertices degree

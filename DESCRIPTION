@@ -5,7 +5,7 @@ Authors@R: c(
     person("Ilwook", "Kim", role = c("aut","cre"), email = "ilwook.kim.1982@gmail.com"),
     person("Nicolas", "Huber", role = "aut"),
     person("‪Vasily", "Romanov" , role = "aut"))
-Description: Gene co-expression network analysis in the context of gene mutation and selected GO Term 
+Description: Gene co-expression network analysis in the context of gene mutation and selected GO Term. 
 License: GPL-2
 Depends: R (>= 3.6)
 Encoding: UTF-8

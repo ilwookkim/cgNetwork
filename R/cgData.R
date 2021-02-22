@@ -11,7 +11,7 @@
 #' cgds <- cgBbase()
 #' mystudy <- "laml_tcga"
 #' cgStudy(cgds, mystudy)
-#' myData <- cgData(cgds, mystudy, profile_name="mRNA expression (RNA Seq RPKM)", genes=c("FLT3","TP53"))
+#' myData <- cgData(cgds, mystudy, "mRNA expression (RNA Seq RPKM)", "TP53")
 #' @export
 #' @import cgdsr org.Hs.eg.db
 cgData <- function(cgds, cancer_study_id, profile_name, caselist_name="All samples", genes=NA, dropNApatients=T){

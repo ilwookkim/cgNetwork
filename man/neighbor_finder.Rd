@@ -27,5 +27,5 @@ character vector, genes that are considered neighbors of the gene of interest (i
 This function allows the user to find neighbor genes network of interested gene.
 }
 \examples{
-common_neighbor <- neighbor_finder(big_cor_matrix, gene="CDKN1A", cor_method = "spearman", cor.cut.off=.39, weight.cut.off=.5, t=TRUE)
+common_neighbor <- neighbor_finder(countdata, "CDKN1A", 0.39, 0.5)
 }
