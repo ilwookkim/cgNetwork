@@ -4,7 +4,7 @@
 #' @param countdata TCGA RNAseq countdata. i.g countdata <- TCGA_RNAseq_RSEM("STAD")
 #' @param study_name name of TCGA study. Defaults to "STAD" (Stomach adenocarcinoma). Find more TCGA Study Abbreviations: https://gdc.cancer.gov/resources-tcga-users/tcga-code-tables/tcga-study-abbreviations
 #' @param gene Hugo Symbol of gene Default to "TP53"
-#' @param pipeline Variant calling is performed using several separate pipelines; muse, varscan2, somaticsniper, mutect2. Default to mutect2. Find details: https://docs.gdc.cancer.gov/Data/Bioinformatics_Pipelines/DNA_Seq_Variant_Calling_Pipeline/#somatic-variant-calling-workflow
+#' @param pipelines Variant calling is performed using several separate pipelines; muse, varscan2, somaticsniper, mutect2. Default to mutect2. Find details: https://docs.gdc.cancer.gov/Data/Bioinformatics_Pipelines/DNA_Seq_Variant_Calling_Pipeline/#somatic-variant-calling-workflow
 #' @examples
 #' mut_info <- mutation_info(countdata, "STAD", "TP53", "mutect2")
 #' mut_info <- mutation_info(countdata, "PAAD", "KRAS","muse")

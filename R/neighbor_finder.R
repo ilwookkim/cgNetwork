@@ -5,13 +5,13 @@
 #' @param gene string, gene of interest to find a network for.
 #' @param cor.cut.off cut off value of correlation coeffiecint to build network. Defaults to .39
 #' @param weight.cut.off cut off value of network weight to reduce edges. Defaults to .5
-#' @param t Matrix Transpose
 #' @return character vector, genes that are considered neighbors of the gene of interest (including the gene of interest itself).
 #' @examples
 #' common_neighbor <- neighbor_finder(big_cor_matrix, gene="CDKN1A", cor_method = "spearman", cor.cut.off=.39, weight.cut.off=.5, t=TRUE)
 #' @export
 #' @import bigmemory
 #' @importFrom igraph graph_from_adjacency_matrix simplify delete_edges neighbors E V
+#' @importFrom stats cor na.omit sd
 
 neighbor_finder <- function(countdata, gene=gene_of_interest, cor.cut.off=.39, weight.cut.off=.5){
 

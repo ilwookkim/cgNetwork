@@ -18,7 +18,7 @@ mutation_info(
 
 \item{gene}{Hugo Symbol of gene Default to "TP53"}
 
-\item{pipeline}{Variant calling is performed using several separate pipelines; muse, varscan2, somaticsniper, mutect2. Default to mutect2. Find details: https://docs.gdc.cancer.gov/Data/Bioinformatics_Pipelines/DNA_Seq_Variant_Calling_Pipeline/#somatic-variant-calling-workflow}
+\item{pipelines}{Variant calling is performed using several separate pipelines; muse, varscan2, somaticsniper, mutect2. Default to mutect2. Find details: https://docs.gdc.cancer.gov/Data/Bioinformatics_Pipelines/DNA_Seq_Variant_Calling_Pipeline/#somatic-variant-calling-workflow}
 }
 \description{
 This function allows the user to download mutation infomation.

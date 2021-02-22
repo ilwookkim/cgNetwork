@@ -19,8 +19,6 @@ neighbor_finder(
 \item{cor.cut.off}{cut off value of correlation coeffiecint to build network. Defaults to .39}
 
 \item{weight.cut.off}{cut off value of network weight to reduce edges. Defaults to .5}
-
-\item{t}{Matrix Transpose}
 }
 \value{
 character vector, genes that are considered neighbors of the gene of interest (including the gene of interest itself).

@@ -13,6 +13,7 @@
 #' @export
 #' @import dplyr
 #' @importFrom igraph graph.adjacency delete.edges V E simplify delete.vertices degree
+#' @importFrom stats cor na.omit sd
 
 cgNetwork <- function(countdata, mut_df, common_neighbor, cor_method = "spearman", weight.cut.off=.5){
   # make sure that the mut_df only has genes that occur in the countdata
