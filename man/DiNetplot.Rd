@@ -13,5 +13,7 @@ DiNetplot(cgNetwork_list)
 Displays an interactive network plot.
 }
 \examples{
+example.file <- system.file("extdata", "example.RData", package="cgNetwork")
+load(example.file)
 DiNetplot(cgNetwork_list)
 }

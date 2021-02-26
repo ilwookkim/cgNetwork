@@ -30,5 +30,7 @@ list of two igraph objects
 Find gene networks around gene of interest, one for WT and one for mutated.
 }
 \examples{
+example.file <- system.file("extdata", "example.RData", package="cgNetwork")
+load(example.file)
 cgNetwork_list <- cgNetwork(countdata, mut_df, common_neighbor, "spearman", 0.5)
 }

@@ -35,7 +35,7 @@ gmt.file <- system.file("extdata", "ReactomePathways.gmt", package="cgNetwork")
 TP53_pathway <- gmtPathways(gmt.file)[["Transcriptional Regulation by TP53"]]
 ```
 
-Option 1: Using the [cgdsr package](https://cran.r-project.org/web/packages/cgdsr/index.html)
+Using the [cgdsr package](https://cran.r-project.org/web/packages/cgdsr/index.html)
 We need to create a cgds object, which also gives us the IDs of available projects. We choose "laml_tcga". Then we acquire information about this project via the cgInfo function, listing the available data types. We choose "mRNA expression (RNA Seq V2 RSEM)". Finally we get the data via the cgData function. We also get mutation data via the cgMutation function. The countdata is separated by different version of RNAseq (i.g. RNA Seq, RNA Seq V2).
 ```r
 cgds <- cgBase() #lists the available studies
@@ -46,15 +46,6 @@ profile_name <- "mRNA expression (RNA Seq V2 RSEM)"
 
 countdata <- cgData(cgds, studyID, profile_name, genes=TP53_pathway)
 mut_df <- cgMutation(cgds, studyID, genes="TP53")
-```
-
-Option 2: Using the [TCGABiolinks package](https://bioconductor.org/packages/release/bioc/html/TCGAbiolinks.html) (Approximately 1 GB of data will be downloaded)
-We obtain the RNA-Seq data via the TCGA_RNAseq_RSEM function and mutation information via mutation_info function. Somatic Mutation Calling Workflow as tumor-normal pairs. Variant calling is performed using four separate pipelines (muse, varscan2, somaticsniper, mutect2), see details : [Somatic Mutation Calling Workflow](https://docs.gdc.cancer.gov/Data/Bioinformatics_Pipelines/DNA_Seq_Variant_Calling_Pipeline/#somatic-variant-calling-workflow). All versions of RNAseq is in single countdata.
-```r
-studyID = "LAML"
-countdata <- TCGA_RNAseq_RSEM(studyID)
-countdata <- countdata[rownames(countdata) %in% TP53_pathway,]
-mut_df <- mutation_info(countdata, studyID, gene = mutation_gene, pipeline = "mutect2")
 ```
 
 **Neighbor genes finder**

@@ -27,5 +27,7 @@ character vector, genes that are considered neighbors of the gene of interest (i
 This function allows the user to find neighbor genes network of interested gene.
 }
 \examples{
+example.file <- system.file("extdata", "example.RData", package="cgNetwork")
+load(example.file)
 common_neighbor <- neighbor_finder(countdata, "CDKN1A", 0.39, 0.5)
 }

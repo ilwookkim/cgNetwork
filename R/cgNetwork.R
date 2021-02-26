@@ -9,6 +9,8 @@
 #' @param weight.cut.off numeric, cut off value of network weight to reduce edges. Defaults to 0.5.
 #' @return list of two igraph objects
 #' @examples
+#' example.file <- system.file("extdata", "example.RData", package="cgNetwork")
+#' load(example.file)
 #' cgNetwork_list <- cgNetwork(countdata, mut_df, common_neighbor, "spearman", 0.5)
 #' @export
 #' @import dplyr

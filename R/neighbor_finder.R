@@ -7,6 +7,8 @@
 #' @param weight.cut.off cut off value of network weight to reduce edges. Defaults to .5
 #' @return character vector, genes that are considered neighbors of the gene of interest (including the gene of interest itself).
 #' @examples
+#' example.file <- system.file("extdata", "example.RData", package="cgNetwork")
+#' load(example.file)
 #' common_neighbor <- neighbor_finder(countdata, "CDKN1A", 0.39, 0.5)
 #' @export
 #' @import bigmemory
