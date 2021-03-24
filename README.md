@@ -2,7 +2,7 @@
 Weighted gene co-expression network analysis by mutation status
 
 ## **Approach**
-There are number of novel gene co-expression networks that regulates by transcriptional regulation genes. This package aims to analyze these networks of interesting gene that possibly interacts with and regulated by transcriptional regulation genes. In order to figure out these network, we analyze RNAseq data in dynamic gene status model such as cancers that has significant deregulation of these processes. 
+Several novel gene co-expression networks regulate by transcriptional regulation genes. This package aims to analyze these engaging gene networks that possibly interact with and regulate transcriptional regulation genes. We analyze RNAseq data in dynamic gene status models such as cancers that have significant deregulation of these processes to figure out these networks. 
 
   1. Retrive RNAseq data from various cancer database.
   1. RNAseq by **mutation_gene** mutation.
@@ -36,7 +36,7 @@ TP53_pathway <- gmtPathways(gmt.file)[["Transcriptional Regulation by TP53"]]
 ```
 
 Using the [cgdsr package](https://cran.r-project.org/web/packages/cgdsr/index.html)
-We need to create a cgds object, which also gives us the IDs of available projects. We choose "laml_tcga". Then we acquire information about this project via the cgInfo function, listing the available data types. We choose "mRNA expression (RNA Seq V2 RSEM)". Finally we get the data via the cgData function. We also get mutation data via the cgMutation function. The countdata is separated by different version of RNAseq (i.g. RNA Seq, RNA Seq V2).
+We need to create a cgds object, which also gives us the IDs of available projects. We choose "laml_tcga". Then we acquire information about this project via the cgInfo function, listing the available data types. We choose "mRNA expression (RNA Seq V2 RSEM)". Finally, we get the data via the cgData function. We also get mutation data via the cgMutation function. The countdata is separated by different RNAseq versions (i.g. RNA Seq, RNA Seq V2).
 ```r
 cgds <- cgBase() #lists the available studies
 studyID <- "laml_tcga"
@@ -87,8 +87,8 @@ Example shiny server: https://ilwookkim.shinyapps.io/dinetplot/
   1. Import network_wt.cys and network_mut.cys files
   1. Apps/Diffany > Run Diffany project
   1. Go to Diffany tab
-  1. Input networks window : include - check Two networks, Reference - check wt network
-  1. Options window : Comparison mode - here I used One to all, Cutoff - Here I used 0.5 Check Differntial networks and Consensus networks.
+  1. Input networks window: include - check Two networks, Reference - check wt network
+  1. Options window: Comparison mode - here I used One to all, Cutoff - Here I used 0.5 Check Differential networks and Consensus networks.
   1. Press Start
   1. export image
 
